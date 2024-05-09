@@ -288,3 +288,8 @@ root.postorder(root)
 print()
 
 ```
+
+
+Next topic: [[Graphs]]
+
+previous topic: [[Trees]]

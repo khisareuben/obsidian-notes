@@ -204,5 +204,139 @@ dll.display()
 ```
 
 
+#### All the code combined
+
+```python
+class Node:
+	def __init__(self, data):
+		self.data = data
+		self.prev = None
+		self.next = None
+
+class Dll:
+	def __init__(self):
+		self.head = None
+
+	def is_empty(self):
+		if self.head is None:
+			print("The list is empty")
+		else:
+			print("The list is not empty")
+
+	def size(self):
+		current = self.head
+		count = 0
+		while current:
+			count += 1
+			current = current.next
+		print(count)
+
+	def add_at_begin(self, data):
+		new = Node(data)
+		if self.head is None:
+			self.head = new
+		else:
+			current = self.head
+			new.next = current
+			current.prev = new
+			self.head = new
+
+	def add_at_end(self, data):
+		new = Node(data)
+		if self.head is None:
+			self.head = new
+		else:
+			current = self.head
+			while current.next:
+				current = current.next
+			current.next = new
+			new.prev = current
+
+	def add_at_spec_pos(self, data, position):
+		new = Node(data)
+		current = self.head
+		for i in range(1, position-1):
+			current = current.next
+		new.next = current.next
+		current.next.prev = new
+		current.next = new
+		new.prev = current
+
+	def del_at_begin(self):
+		if self.head is None:
+			print("The list is empty")
+			return
+		current = self.head
+		self.head = current.next
+		current.next = None
+		self.head.prev = None
+
+	def del_at_end(self):
+		if self.head is None:
+			print("The list is empty")
+			return
+		before = self.head
+		current = self.head.next
+		while current.next:
+			current = current.next
+			before = before.next
+		before.next = None
+		current.prev = None
+
+	def del_at_spec_pos(self):
+		before = self.head
+		current = self.head.next
+		for i in range(1, position-1):
+			current = current.next
+			before = before.next
+		before.next = current.next
+		current.next.prev = before
+		current.next = None
+		current.prev = None
+
+	def traversal(self):
+		if self.head is None:
+			print("List is empty")
+		else:
+			 current = self.head
+			 while current:
+				 print(current.data, end=" ")
+				 current = current.next
+
+	def backward_traversal(self):
+		if self.head is None:
+			print("The list is empty")
+		else:
+			current = self.head
+			while current.next:
+				current = current.next
+	
+			while current:
+				print(current.data, end=" ")
+				current = current.prev
+
+	def display(self):
+		lists = []
+		current = self.head
+		while current:
+			lists.append(str(current.data))
+			current = current.next
+		print(" <-> ".join(lists))
+
+
+dll = Dll()
+dll.add_at_end(2)
+dll.add_at_end(3)
+dll.add_at_end(4)
+dll.add_at_end(5)
+dll.add_at_begin(1)
+dll.is_empty()
+dll.size()
+dll.display()
+dll.del_at_end()
+dll.display()
+```
+
+
 Next topic: [[Trees]]
 previous topic: [[Queue]]
