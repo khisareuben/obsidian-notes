@@ -168,5 +168,116 @@ l.display()
 ```
 
 
+#### All combined codes from above
+
+```python
+class Node:
+	def __init__(self,data):
+		self.data = data
+		self.next = None
+
+class LinkedList:
+	def __init__(self):
+		self.head = None
+
+	def is_empty(self):
+		if self.head is None:
+			print("The list is empty")
+		else:
+			print("The list is not empty")
+
+	def size(self):
+		current = self.head
+		count = 0
+		while current:
+			count += 1
+			current = current.next
+		print(count)
+
+	def add_at_begin(self, data):
+		new = Node(data)
+		if self.head is None:
+			self.head = new
+		else:
+			new.next = self.head
+			self.head = new
+
+	def add_at_end(self, data):
+		new = Node(data)
+		if self.head is None:
+			self.head = new
+		else:
+			current = self.head
+			while current.next:
+				current = current.next
+			current.next = new
+
+	def add_at_spec_pos(self, data, position):
+		new = Node(data)
+		current = self.head
+		for i in range(1, position-1):
+			current = current.next
+		new.next = current.next
+		current.next = new
+
+	def del_at_begin(self):
+		if self.head is None:
+			print("The list is empty")
+			return
+		current = self.head
+		self.head = current.next
+		current.next = None
+
+	def del_at_end(self):
+		if self.head is None:
+			print("The list is empty")
+			return
+		prev = self.head
+		current = self.head.next
+		while current.next:
+			current = current.next
+			prev = prev.next
+		prev.next = None
+
+	def del_at_spec_pos(self, position):
+		prev = self.head
+		current = self.head.next
+		for i in range(1, position-1):
+			current = current.next
+			prev = prev.next
+		prev.next = current.next
+		current.next = None
+
+	def search(self, target):
+		if current.data is None:
+			print("The list is empty")
+			return
+		current = self.head
+		while current:
+			if current.data == target:
+				print("Target is found")
+			else:
+				current = current.next
+
+	def display(self):
+		lists = []
+		current = self.head
+		while current:
+			lists.append(str(current.data))
+			current = current.next
+		print("-> ".join(lists))
+
+l = LinkedList()
+l.add_at_end(2)
+l.add_at_end(3)
+l.add_at_end(4)
+l.add_at_begin(5)
+l.is_empty()
+l.size()
+l.display()
+l.del_at_end()
+l.display()	
+```
+
 Next topic: [[Stack]]
 #end
