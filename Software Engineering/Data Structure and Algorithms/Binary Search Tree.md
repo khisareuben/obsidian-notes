@@ -18,7 +18,7 @@ class Node:
 		print(node.val, end=" ")
 
 	def preorder(self, current):
-		if self.val is None:
+		if current is None:
 			print("The list is empty")
 			return
 		self.visit(current)
@@ -26,7 +26,7 @@ class Node:
 		self.preorder(current.right)
 
 	def inorder(self, current):
-		if self.val is None:
+		if current is None:
 			print("The list is empty")
 			return
 		self.inorder(current.left)
@@ -34,7 +34,7 @@ class Node:
 		self.inorder(current.right)
 
 	def postorder(self, current):
-		if self.val is None:
+		if current is None:
 			print("The list is empty")
 			return
 		self.postorder(current.left)
@@ -290,6 +290,6 @@ print()
 ```
 
 
-Next topic: [[Graphs]]
+Next topic: [[Graphs Theory]]
 
 previous topic: [[Trees]]
