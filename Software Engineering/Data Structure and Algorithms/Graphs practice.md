@@ -3,6 +3,8 @@ we will write the coding implementation of the **BFS** and **DFS** algorithms
 
 #### 1. Depth First Search (DFS) [stack]
 
+It uses stack in order to traverse through the list
+
 ```python
 
 graph = {
@@ -28,3 +30,37 @@ def dfs(graph, source):
 dfs(graph, "a")
 	
 ```
+
+
+#### 2. Breadth first search [queue]
+
+It use queue in order to traverse through the list
+
+```python
+graph = {
+	"a" : ["b", "d"],
+	"b" : [],
+	"c" : [],
+	"d" : ["e", "g"],
+	"e" : ["c"],
+	"f" : [],
+	"g" : ["f"],
+		
+}
+
+def bfs(graph, source):
+	queue = []
+	queue.append(source)
+	while queue:
+		node = queue.pop(0)
+		print(node, end=" ")
+		for neighbours in graph[node]:
+			queue.append(neighbours)
+
+bfs(graph, "a")
+```
+
+
+Next topic : [[Graphs practice problems]]
+
+previous topic : [[Graphs Theory]]
