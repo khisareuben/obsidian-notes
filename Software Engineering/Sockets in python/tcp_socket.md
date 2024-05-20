@@ -49,3 +49,6 @@ print(message.decode("utf-8"))
 #close the client socket
 client_socket.close()
 ```
+
+
+Next topic : [[udp_socket]]
