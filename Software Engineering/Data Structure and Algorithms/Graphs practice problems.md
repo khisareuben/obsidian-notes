@@ -94,3 +94,8 @@ src = input("Enter the source: ")
 dst = input("Enter the destination: ")
 print(has_path(src, dst, graph, visited))
 ```
+
+
+Next topic : [[Hash tables]]
+
+previous topic : [[Graphs practice]]

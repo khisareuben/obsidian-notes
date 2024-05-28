@@ -2,7 +2,6 @@
 
 ```python
 # importing a socket
-
 import socket
 
 # defining the variables
@@ -13,6 +12,9 @@ BYTESIZE = 1024
 
 # creating a socket
 server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+
+# reusing the socket address
+server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 
 # binding
 server_socket.bind((HOST_IP, HOST_PORT))
