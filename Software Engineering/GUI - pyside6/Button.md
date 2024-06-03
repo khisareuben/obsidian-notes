@@ -1,4 +1,4 @@
-
+ 
 ```python
 from PySide6.QtWidgets import QApplication, QMainWidget, QPushButton
 import sys
@@ -16,3 +16,8 @@ window.show()
 
 app.exec()
 ```
+
+
+Next topic : [[Signals and slots]]
+
+previous topic : [[first qt program]]
