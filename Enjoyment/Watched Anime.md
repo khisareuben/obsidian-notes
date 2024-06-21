@@ -103,3 +103,13 @@
 102. The legend of the legendary heroes
 103. Jujutsu kaizen
 104. Demon slayer
+105. Takt op destiny 
+106. Date a live
+107. The tower of god
+
+
+one piece
+black clover
+sword art online
+hunter x hunter 
+tokyo ravengers
