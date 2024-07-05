@@ -106,9 +106,12 @@
 105. Takt op destiny 
 106. Date a live
 107. The tower of god
+108. I'm quitting heroing
 
 
 one piece
+demon slayer
+my hero academia
 black clover
 sword art online
 hunter x hunter 
