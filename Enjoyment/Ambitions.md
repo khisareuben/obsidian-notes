@@ -13,5 +13,5 @@
 - Logitech G502 HERO High Performance Wired Gaming Mouse - ksh 11,000
 - hp deskjet 2710 printer - ksh 14,000
 - Adjustable electric desk - ksh 35,000
-- Macbook air - 200,00
+- Macbook air - ksh 200,000
 - Xiaomi Black Shark 3 12GB – 256GB - ksh 70,000

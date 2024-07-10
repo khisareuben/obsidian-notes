@@ -107,8 +107,11 @@
 106. Date a live
 107. The tower of god
 108. I'm quitting heroing
+109. The unwanted undead adventurer
+110. As a Reincarnated Aristocrat, I'll Use My Appraisal Skill to Rise in the World
 
 
+### my to watch list
 one piece
 demon slayer
 my hero academia
