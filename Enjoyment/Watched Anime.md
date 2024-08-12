@@ -109,6 +109,7 @@
 108. I'm quitting heroing
 109. The unwanted undead adventurer
 110. As a Reincarnated Aristocrat, I'll Use My Appraisal Skill to Rise in the World
+111. Record of ragnarok
 
 
 ### my to watch list

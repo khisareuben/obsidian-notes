@@ -304,3 +304,8 @@ previous topic : [[Graphs practice problems]]
 Hash Tables are powerful tools in programming, helping you to manage and access data efficiently.
 
 Whether you use a Hash Set or a Hash Map depends on what you need: just to know if something is there, or to find detailed information about it.
+
+
+
+previous : [[]]
+next : [[Hash sets]]
