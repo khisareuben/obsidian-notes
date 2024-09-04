@@ -50,7 +50,7 @@
 To import my sql 
 ```
 cd to the directory where the file is
-sudo mysql < filename
+sudo mysql/mariadb < filename
 ```
 
 - Select a database:
@@ -70,7 +70,6 @@ sudo mysql < filename
     DROP DATABASE [database_name];
     ```
     
-    AI-generated code. Review and use carefully. .
     
 
 ## Table Operations
@@ -125,45 +124,49 @@ sudo mysql < filename
     
     ```sql
     INSERT INTO [table_name] (column1, column2, ...)
-    VALUES (value1, value2, ...);
+    VALUES ('value1', 'value2', ...);
     ```
-    
-    
+
+adding a column
+```sql
+alter table [table_name]
+-> add column [col_name] varchar(50)
+```
+
+
 - Update data in a table:
     
-    SQL
+    SQL is used to change something in a table in a specific column too 
     
     ```sql
     UPDATE [table_name]
-    SET column1 = value1, column2 = value2, ...
-    WHERE condition;
+    SET column1 = 'value1', column2 = 'value2', ...
+    WHERE condition; e.g dept_no = 'd010'
     ```
     
-    AI-generated code. Review and use carefully. .
     
 - Delete data from a table:
     
     SQL
     
     ```sql
-    DELETE FROM [table_name]
-    WHERE condition;
+    DELETE FROM [table_name] e.g department
+    WHERE condition; e.g dept_no = 'd010'
     ```
     
-    AI-generated code. Review and use carefully. .
     
 
 ## Querying Data
 
 - Select all data from a table:
     
-    SQL
+    SQL 
     
     ```sql
     SELECT * FROM [table_name];
+    SELECT * FROM [table_name] limit 20;
     ```
     
-    AI-generated code. Review and use carefully. .
     
 - Select specific columns:
     
@@ -174,18 +177,16 @@ sudo mysql < filename
     FROM [table_name];
     ```
     
-    AI-generated code. Review and use carefully. .
     
 - Select with conditions:
     
-    SQL
-    
+    SQL  when we want to filter we us the **where** close
+	
     ```sql
     SELECT * FROM [table_name]
-    WHERE condition;
+    WHERE condition; e.g where last_name = 'khisa' and gender = 'female'
     ```
     
-    AI-generated code. Review and use carefully. .
     
 - Sorting results:
     
@@ -194,10 +195,14 @@ sudo mysql < filename
     ```sql
     SELECT * FROM [table_name]
     ORDER BY column1 [ASC|DESC];
-    ```
+```
     
-    AI-generated code. Review and use carefully. .
-    
+```sql
+select * from [table_name] where birth_date like '%1952%' limit 10
+
+-- this selects everthing that has birth_date 1952
+-- like helps search for texts that are same but have something before or after it
+```
 
 ## Aggregate Functions
 
@@ -210,7 +215,6 @@ sudo mysql < filename
     FROM [table_name];
     ```
     
-    AI-generated code. Review and use carefully. .
     
 - Sum values:
     
@@ -221,7 +225,6 @@ sudo mysql < filename
     FROM [table_name];
     ```
     
-    AI-generated code. Review and use carefully. .
     
 - Average values:
     
@@ -232,14 +235,13 @@ sudo mysql < filename
     FROM [table_name];
     ```
     
-    AI-generated code. Review and use carefully. .
     
 
 ## Joining Tables
 
 - Inner join:
     
-    SQL
+    SQL  it only brings the results that match only
     
     ```sql
     SELECT columns
@@ -248,7 +250,6 @@ sudo mysql < filename
     ON table1.column = table2.column;
     ```
     
-    AI-generated code. Review and use carefully. .
     
 - Left join:
     
@@ -261,7 +262,6 @@ sudo mysql < filename
     ON table1.column = table2.column;
     ```
     
-    AI-generated code. Review and use carefully. .
     
 
 ## Backup and Restore
@@ -289,7 +289,6 @@ sudo mysql < filename
     SELECT USER();
     ```
     
-    AI-generated code. Review and use carefully. .
     
 - Show current database:
     
