@@ -12,3 +12,9 @@ The best extension that made me like vscode
 11. **UNG colors**
 
 
+Obisidian themes
+
+1. **Panic mode**
+2. 
+
+
