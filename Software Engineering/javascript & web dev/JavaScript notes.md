@@ -50,9 +50,32 @@ JavaScript is a versatile, high-level programming language primarily used for we
         return `Hello, ${name}!`;
     }
     console.log(greet("Alice")); // Output: Hello, Alice!
+
+// to turn an array into a string
+let fruits = ["Apple", "Banana", "Cherry"];
+let jsonString = JSON.stringify(fruits);
+console.log(jsonString); // Outputs: '["Apple","Banana","Cherry"]'
+
     ```
     
     AI-generated code. Review and use carefully. .
+
+
+1. **objects**: this is same a dictionaries in python 
+
+```javascript
+var object = {
+	"name" : "Reuben",
+	"school": "Jooust",
+	"home" : "Mariakani"
+}
+
+var results = object.name //or
+var results = object["name"]
+```
+
+
+
     
 4. **Control Structures**: Includes conditionals and loops.
     
