@@ -1,5 +1,4 @@
-1. **solar-powered water purification system**
-fddfhfh
+1. **solar-powered water purification system** 
 3. **Mobile Health Clinics with Telemedicine Integration**
 
 

@@ -111,3 +111,18 @@ AI-generated code. Review and use carefully. .
     ```css
     background-image: linear-gradient(to right, rgba(255,0,0,0), rgba(255,0,0,1));
     ```
+
+
+### This is for a transparent text
+
+#open-btn:hover p {
+
+background: url(img/mountains.jpg) no-repeat center center/ cover;
+
+color: transparent;
+
+background-clip: text;
+
+-webkit-background-clip: text;
+
+}

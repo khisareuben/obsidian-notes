@@ -94,8 +94,74 @@ var results = object["name"]
         console.log(i);
     }
     ```
-    
-    AI-generated code. Review and use carefully. .
+
+
+
+### While Loop
+
+A `while` loop repeats a block of code as long as a specified condition is true.
+
+javascript
+
+Copy
+
+```javascript
+let count = 0;
+while (count < 5) {
+    console.log(count);
+    count++;
+}
+```
+
+_This will print numbers 0 to 4._
+
+### Objects
+
+Objects are collections of properties, defined using key-value pairs.
+
+javascript
+
+Copy
+
+```javascript
+let car = {
+    make: 'Toyota',
+    model: 'Corolla',
+    year: 2020
+};
+console.log(car.make);  // Outputs: Toyota
+```
+
+### Classes and Inheritance
+
+Classes are templates for creating objects, and they can use inheritance to extend other classes.
+
+javascript
+
+Copy
+
+```javascript
+class Animal {
+    constructor(name) {
+        this.name = name;
+    }
+
+    speak() {
+        console.log(`${this.name} makes a sound.`);
+    }
+}
+
+class Dog extends Animal {
+    speak() {
+        console.log(`${this.name} barks.`);
+    }
+}
+
+let dog = new Dog('Rex');
+dog.speak();  // Outputs: Rex barks.
+```
+
+These basic examples should get you started. Anything specific you want to dive deeper into?
     
 5. **Events**: Actions that can be detected by JavaScript, such as clicks or key presses.
     
