@@ -3,6 +3,15 @@
 
 **Time:** 04:10:08
 
+`transform: translate(-50%, -50%);` is a CSS property used to perfectly center an element within its parent container. Here's how it works:
+
+- `translate(x, y)` moves an element by a specified amount along the X (horizontal) and Y (vertical) axes.
+    
+- `-50%` shifts the element left (X-axis) and up (Y-axis) by half of its own width and height.
+    
+
+When combined with `position: absolute;` and `top: 50%; left: 50%;`, the element is centered both horizontally and vertically.
+
 ### 3.7 Setting Dimensions in CSS
 
 - **Width and Height:** Use `width` and `height` properties to set the dimensions of an element.
