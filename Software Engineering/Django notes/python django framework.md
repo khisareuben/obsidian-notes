@@ -1,0 +1,205 @@
+
+### Django Comprehensive Notes
+
+#### Topics
+
+1. Introduction to Django
+    
+2. Setting Up a Django Project
+    
+3. Django Project Structure
+    
+4. Models and Databases
+    
+5. Views and URL Routing
+    
+6. Templates and Static Files
+    
+7. Forms and User Input
+    
+8. Authentication and Authorization
+    
+9. Django Admin Interface
+    
+10. Deployment and Production
+    
+
+### 1. Introduction to Django
+
+- Django is a high-level Python web framework that encourages rapid development and clean, pragmatic design.
+    
+- Follows the "Don't Repeat Yourself" (DRY) principle.
+    
+- Provides an ORM (Object-Relational Mapping) for database manipulation.
+    
+
+### 2. Setting Up a Django Project
+
+- **Create a project directory**:
+
+	```bash
+	mkdir <name>
+	cd name
+```
+    
+- **create a virtual environment**:
+
+	```bash
+	python3 -m venv <name-env>
+	
+	source name-env/Scripts/activate
+```
+    
+- **create django project**: 
+
+	```bash
+	pip3 install django
+	
+	python3 -m django version
+
+	django-admin startproject <project-name>
+```
+
+- **Run development server**: 
+
+	```bash
+	cd project-name
+	python3 manage.py runserver
+```
+- Access the server at `http://127.0.0.1:8000/`
+
+
+## How to create an app in django
+
+An app is just different sections of the website, e.g `home` `about` `contacts`  and others
+This should be done inside the projects folder
+
+```bash
+python -m django startapp myapp
+```
+
+
+### 3. Django Project Structure
+
+- **[manage.py](https://manage.py/?form=MG0AV3)**: Command-line utility for project management.
+    
+- **projectname/**: Main project folder.
+    
+    - **[settings.py](https://settings.py/?form=MG0AV3)**: Configuration settings.
+        
+    - **[urls.py](https://urls.py/?form=MG0AV3)**: URL declarations.
+        
+    - **[wsgi.py](https://wsgi.py/?form=MG0AV3)**: WSGI configuration for deployment.
+        
+    - **[asgi.py](https://asgi.py/?form=MG0AV3)**: ASGI configuration for deployment.
+        
+
+### 4. Views and URL Routing
+
+- **Define Views**: Create view functions in `views.py`.
+- views handle http requests and response
+
+	```python
+	form django.http import HttpResponse
+	def home(request):
+		content = <html><body><h1>Welcome to django</h1></body></html>
+```
+    
+## Routing
+This is mapping a url to a view function
+You need to create a new file inside the app folder, not the project folder e.g `myapp/urls.py`
+
+#### urls.py(app)
+```python
+from django.urls import path
+from . import views
+
+urlpatterns = [
+#first argument is the route which is a stiring that contains the url pattern
+# the second contain the view and the name of the view function
+			   path('', views.home, name='home')
+]
+```
+
+
+## URL configuration
+
+Django create a `urls.py` in the projects folder but its best practice to create a `urls.py` in the app folder
+you need the `include()` function to tell django to also check the urls file in app folder 
+
+### urls.py (project folder)
+
+```python
+from django.contrib import admin
+from django.urls import path, include
+from myapp import views
+
+urlpatterns = [
+			   path('admin/', admin.site.urls)
+			   path('', include('myapp.urls'))
+			   # change the myapp accordingly
+]
+```
+
+
+## http
+it uses four methods: 
+`GET`  - retrieve information from the given server
+`POST` - send data to the server
+`PUT` - updates whatever exists in the sever with something else
+`DELETE` - removes the resource
+
+### http status code
+- Informational - `100 - 199`
+- Successful - `200 - 299`
+- Redirection - `300 - 399`
+- Client error - `400 - 499`
+- Sever error - `500 - 599`
+
+## 1 : 37 angle brackets and path converters
+
+##### urls.py (myapp folder)
+```python
+from django.urls import path
+from myapp import views
+
+urlpatterns = [
+			   path('dishes/<str:dish>', views.menuitems)
+			   
+]
+```
+
+#### views.py (myapp)
+```python
+form django.shortcuts import render
+from django.http import HttpResponse
+
+def menuitems(request, dish)
+	items = {
+		"pasta" : "is a noodle food"
+		"falafel" : "deep fired patties"
+		"cheesecake" : "is a type of dessert"
+	}
+
+	description = items[dish]
+	return HttpResponse(f"<h2> {dish} </h2> + discription)
+```
+
+
+## Regular expressions
+
+- They define url patterns in django
+	 this is like the angle brackets and path converters but it allows you to create a single page instead of creating different pages for `pasta`  `falafel`  `cheesecake`
+
+- **RegEx** which means regular expressions are a set of characters that specify a pattern and are used to search for or find patterns in a string. They perform
+		`Extraction and validation`
+		`Advanced seaching`
+		`Group searches`
+		`Find and replace`
+
+	 e.g  r ' ^menu_item/ ([0 - 9] {2}) /$ '
+
+
+
+
+
