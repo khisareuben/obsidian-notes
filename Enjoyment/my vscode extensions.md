@@ -1,3 +1,5 @@
+#002147
+
 The best extension that made me like vscode
 1. **Prettier - Code formatter**
 2. **Python**
@@ -8,8 +10,11 @@ The best extension that made me like vscode
 7. **HTMLHint**
 8. **Live Server**
 9. **Settings Sync**
-10. **Simple icons**
+10. **Vscode great icons**
 11. **UNG colors**
+12. **Smart Tabs**
+13. **Bracket Pair Color DLW**
+14. **100 days of code**
 
 
 Obisidian themes
