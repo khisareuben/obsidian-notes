@@ -15,7 +15,7 @@
 	1. then below the valriable write another code
 		```python
 		MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-		MEDIA_URL = '/images/'  #(optional)
+		MEDIA_URL = 'images/'  #(optional)
 		
 		STATICFILES_DIRS = os.path.join(BASE_DIR, 'staticfiles')
 		or
