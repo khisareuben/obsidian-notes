@@ -1,4 +1,4 @@
-
+Benson Boone music
 1. Create an overall folder to hold everything
 2. create the virtual environment
 3. create the django project
