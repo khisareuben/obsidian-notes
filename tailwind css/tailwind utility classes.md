@@ -82,6 +82,7 @@
 #### Borders
 
 - **Border Radius**: `rounded-none`, `rounded-sm`, `rounded`, `rounded-md`, `rounded-lg`, `rounded-full`, `rounded-t`, `rounded-r`, `rounded-b`, `rounded-l`, `rounded-tl`, `rounded-tr`, `rounded-br`, `rounded-bl`
+- `border-4 border-red-500` `border-r-4`
     
 - **Border Width**: `border-0`, `border-2`, `border-4`, `border-8`
     
@@ -96,7 +97,7 @@
 - **Opacity**: `opacity-0`, `opacity-25`, `opacity-50`, `opacity-75`, `opacity-100`
 
 - **gradient**: `bg-gradient-to-r from-pink-100 to-red-500`
-    
+`bg-gradient-to-r from-pink-100 via-blue-500 to-red-500`
 
 #### Background
 
@@ -107,7 +108,27 @@
 - **Background Position**: `bg-bottom`, `bg-center`, `bg-left`, `bg-left-bottom`, `bg-left-top`, `bg-right`, `bg-right-bottom`, `bg-right-top`, `bg-top`
     
 
-#### Pseudo-Classes
+#### images and filters
+- **contrast**: `contrast-50` `contrast-100` `contrast-125` ... deals with color
+- **brightness**: `brightness-50` .... deals with light
+- **grayscale**: `grayscale-0`, `grayscale` `invert` `sepia` deals with filters
+- **hue**: `hue-rotate-0` `hue-rotate-15` rotates the hue or an image
+- **saturate**: `saturate-100`
+- **blur**: `blur-none`, `blur-sm`, `blur-lg`, `blur-2xl`
+
+
+#### flexbox
+
+- `flex`, `flex flex-col`
+- **justify content**: `justify-start`, `justify-end`, `justify-center`, `justify-between` `justify-around` 
+- **order**: `order-1` `order-2` ... it will push the div to the order number you specify 
+
+#### media queries
+
+- `sm`, `md` `lg` `xl` `2xl`
+- `sm:w-32 lg:w-48`
+	
+ #### Pseudo-Classes
 
 - **Hover, Focus, Active**: `hover:bg-blue-500`, `focus:bg-blue-500`, `active:bg-blue-500`
     
