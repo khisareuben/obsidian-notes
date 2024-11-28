@@ -10,9 +10,15 @@
 - **Border Colors**: `border-black`, `border-white`, `border-gray-100`, ..., `border-gray-900`, `border-red-500`, `border-blue-500`, etc.
 - **Arbitrary Colors**: `text-[#002147]`, `bg-[#002147]`
     
+#### Text Decoration
 
+- **Underline**: `underline decoration-4`, `underline decoration-solid`, `underline decoration-double` `dotted dashed wavy`
+- **line-through**: `line-through decoration-1` 
+- **overline**: `overline`
+- **offset**: `underline underline-offset-2` spacing between the text decoration line and the text
+- **text transform**: `normal-case`, `uppercase`, `lowercase`, `capitalize` 
 #### Typography
-
+     
 - **Font Family**: `font-sans`, `font-serif`, `font-mono`
     
 - **Font Size**: `text-xs`, `text-sm`, `text-base`, `text-lg`, `text-xl`, `text-2xl`, ..., `text-6xl`
@@ -56,14 +62,19 @@
 
 - **Margin**: `m-0`, `m-1`, `m-2`, `m-4`, `m-8`, `m-auto`, `mx-0`, `mx-1`, ..., `my-8`, `ml-0`, ..., `mr-8` m-[20px]
     
-- **Padding**: `p-0`, `p-1`, `p-2`, `p-4`, `p-8`, `px-0`, `px-1`, ..., `py-8`, `pl-0`, ..., `pr-8`  p-[20px ]
+- **Padding**: `p-0`, `p-1`, `p-2`, `p-4`, `p-8`, `px-0`, `px-1`, ..., `py-8`, `pl-0`, ..., `pr-8`  p-[20px]
     
 - **Space Between**: `space-x-1`, `space-x-2`, `space-x-4`, `space-y-1`, `space-y-2`, `space-y-4`
-    
 
+#### position
+
+- `static`, `fixed`, `absolute`, `relative`, `sticky` 
+- **Display**: `block` `inline` `inline-block` `hidden` 
 #### Sizing
 
-- **Width**: `w-0`, `w-1`, `w-2`, `w-4`, `w-8`, `w-auto`, `w-full`, `w-screen`
+- **Width**: `w-0`, `w-1`, `w-2`, `w-4`, `w-8`, `w-auto`, `w-full`, `w-screen` percentage; `w-1/2` `w-1/3` `w-2/5` 
+- max-width: `max-w-lg` `max-w-3xl` `max-w-sm`
+- arbitrary w-[500px]
     
 - **Height**: `h-0`, `h-1`, `h-2`, `h-4`, `h-8`, `h-auto`, `h-full`, `h-screen`
     
@@ -79,13 +90,18 @@
 
 #### Effects
 
-- **Box Shadow**: `shadow-xs`, `shadow-sm`, `shadow`, `shadow-md`, `shadow-lg`, `shadow-xl`, `shadow-2xl`, `shadow-inner`, `shadow-outline`, `shadow-none`
+- **Box Shadow**: `shadow-xs`, `shadow-sm`, `shadow`, `shadow-md`, `shadow-lg`, `shadow-xl`, `shadow-2xl`, `shadow-inner`, `shadow-outline`, `shadow-none` color 
+- `shadow-lg shadow-gray-300/40` the 40 is opacity
     
 - **Opacity**: `opacity-0`, `opacity-25`, `opacity-50`, `opacity-75`, `opacity-100`
+
+- **gradient**: `bg-gradient-to-r from-pink-100 to-red-500`
     
 
 #### Background
 
+- **Background images**: `bg-cover bg-no-repeat bg-center`
+- syle="background-image: url(image-path)   `this comes after the class, inline styling` 
 - **Background Size**: `bg-auto`, `bg-cover`, `bg-contain`
     
 - **Background Position**: `bg-bottom`, `bg-center`, `bg-left`, `bg-left-bottom`, `bg-left-top`, `bg-right`, `bg-right-bottom`, `bg-right-top`, `bg-top`
