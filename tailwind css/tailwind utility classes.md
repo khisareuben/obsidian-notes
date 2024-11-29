@@ -48,10 +48,15 @@
 - **Flex Wrap**: `flex-wrap`, `flex-wrap-reverse`, `flex-nowrap`
     
 - **Align Items**: `items-start`, `items-center`, `items-end`, `items-baseline`, `items-stretch`
+- - `flex`, `flex flex-col`
+- **order**: `order-1` `order-2` ... it will push the div to the order number you specify 
+- `flex-none`, `flex-initial`, `flex-auto`, `flex-1`  deals with growing and shrinking
+
     
 - **Justify Content**: `justify-start`, `justify-center`, `justify-end`, `justify-between`, `justify-around`, `justify-evenly`
     
-- **Grid Template Columns**: `grid-cols-1`, `grid-cols-2`, `grid-cols-3`, ..., `grid-cols-12`
+- **Grid Template Columns**: `grid-cols-1`, `grid-cols-2`, `grid-cols-3`, ..., `grid-cols-12 gap-4`
+- **span**: `col-span-2` this takes two columns `row-span-2`
     
 - **Grid Column Start/End**: `col-start-1`, `col-end-2`, etc.
     
@@ -117,16 +122,27 @@
 - **blur**: `blur-none`, `blur-sm`, `blur-lg`, `blur-2xl`
 
 
-#### flexbox
-
-- `flex`, `flex flex-col`
-- **justify content**: `justify-start`, `justify-end`, `justify-center`, `justify-between` `justify-around` 
-- **order**: `order-1` `order-2` ... it will push the div to the order number you specify 
-
 #### media queries
 
 - `sm`, `md` `lg` `xl` `2xl`
 - `sm:w-32 lg:w-48`
+
+
+#### Transition
+
+- `transition duration-300 ease-in-out delay-150 `
+
+#### Transformation
+
+- `hover:-translate-y-1 hover:scale-110 hover:bg-teal-500`
+this will make it bigger once you hover 
+
+
+#### Animation
+
+- `animate-spin`, `animate-ping`, `animate-pulse`, `animate-bounce`
+- `motion-safe:animate-spin` reduces motion
+
 	
  #### Pseudo-Classes
 
