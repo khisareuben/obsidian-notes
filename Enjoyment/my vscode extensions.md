@@ -15,6 +15,12 @@ The best extension that made me like vscode
 12. **Smart Tabs**
 13. **Bracket Pair Color DLW**
 14. **100 days of code**
+15. **Tailwindcss intellisence**
+16. **postcss language support**
+17. **django**
+18. **codeium**
+19. **html css support**
+20. **JavaScript (ES6) code snippets**
 
 
 Obisidian themes
