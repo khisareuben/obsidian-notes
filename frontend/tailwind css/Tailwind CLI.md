@@ -42,6 +42,23 @@ Add the code below in the `input.css`
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+# writin your own classes
+@layer components {
+.menu-components {
+	@apply text-white bg-indigo-500 p-2;
+ }
+}
+# whenever you write menu-components it will app the classes defined inside
+
+# changing classes properties
+@layer utilities{
+.text-green-500{
+	color: white;
+	background: teal;
+ }
+}
+# whenever you write text-green-500 it will apply the white color and teal bg
 ```
 
 
