@@ -1,6 +1,6 @@
 
 # 002147
-# 03162b
+# **03162b**
 
 ### Tailwind CSS Utility Classes
 
@@ -110,7 +110,8 @@
 #### Background
 
 - **Background images**: `bg-cover bg-no-repeat bg-center`
-- syle="background-image: url(image-path)   `this comes after the class, inline styling` 
+- style="background-image: url(image-path)   `this comes after the class, inline styling` 
+- `bg-[url('path/to/your/image.jpg')] bg-cover bg-center h-screen`
 - **Background Size**: `bg-auto`, `bg-cover`, `bg-contain`
     
 - **Background Position**: `bg-bottom`, `bg-center`, `bg-left`, `bg-left-bottom`, `bg-left-top`, `bg-right`, `bg-right-bottom`, `bg-right-top`, `bg-top`

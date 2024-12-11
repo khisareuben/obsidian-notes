@@ -64,6 +64,8 @@ Add the code below in the `input.css`
 
 ## 6. write a script on the package.json
 
+in django the output will be inside the static files e.g.                   `./static/css/main.css`
+
 ```json
 {
 
