@@ -7,6 +7,7 @@
 | Doing some cleaning                   | **13.00 -- 14.30pm**  |
 | Gaming/Watching anime & wuxia drama   | **14.30 -- infinity** |
 |                                       |                       |
+|                                       |                       |
 
 Methods to select elements in the dom
 how to traverse the dom

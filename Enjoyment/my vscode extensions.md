@@ -21,6 +21,7 @@ The best extension that made me like vscode
 18. **codeium**
 19. **html css support**
 20. **JavaScript (ES6) code snippets**
+21. **inline fold**
 
 
 Obisidian themes

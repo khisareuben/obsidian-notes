@@ -1,4 +1,28 @@
 
+```
+my-project/
+├── node_modules/
+├── src/
+│   ├── input.css
+│   ├── components/
+│   
+│   
+├── build/
+│   ├── index.html
+│   └── img/
+	└── css/
+		└── main.css
+	└── favicon.ico
+	
+├── package.json
+├── postcss.config.js
+├── tailwind.config
+├── .gitignore
+└── README.md
+
+```
+
+
 ## 1. initialize the package.json
 
 ```bash
@@ -9,7 +33,12 @@ npm init -y
 
 ```bash
 npm i -D tailwindcss
+or
+npm i -D prettier-plugin-tailwindcss
 ```
+
+
+**Note!**  the node modules will be in the `.gitignore` file so don't push it to github
 
 ## 3. create a config file
 
@@ -25,7 +54,7 @@ In the content section put the file path of your html
 ```js
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./public/**/*.{html,js}"],
+  content: ["./build/**/*.{html,js}"],
   theme: {
     extend: {},
   },
@@ -71,10 +100,9 @@ in django the output will be inside the static files e.g.                   `./s
 
   "scripts": {
 
-    "build": "tailwindcss -i ./src/input.css -o ./css/main.css",
+	"tailwind": "npx tailwindcss -i ./src/input.css -o ./build/css/main.css --watch",
 
-    "watch": "tailwindcss -i ./src/input.css -o ./css/main.css --watch"
-
+    "prettier": "npx prettier --write '**/*.html'"
   },
 
     "tailwindcss": "^3.4.15
@@ -88,6 +116,5 @@ in django the output will be inside the static files e.g.                   `./s
 ## lastly
 
 ```bash
-npm run build
-npm run watch
+npm run tailwind
 ```

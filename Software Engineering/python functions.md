@@ -52,3 +52,28 @@ value = my_dict.get("key", "default_value")
 my_dict["new_key"] = "new_value"
 
 ```
+
+
+### Using `termcolor`
+
+`termcolor` is another library that provides colored terminal text.
+
+1. **Install** `termcolor`:
+    
+    sh
+    
+    ```
+    pip install termcolor
+    ```
+    
+2. **Example Code**:
+    
+    python
+    
+    ```
+    from termcolor import colored
+    
+    # Print colored text
+    print(colored("This line is red", "red"))
+    print("This line is default color")
+    ```
