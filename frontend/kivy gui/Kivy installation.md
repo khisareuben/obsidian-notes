@@ -1,0 +1,4 @@
+
+```
+ python -m pip install "kivy[full]" kivy_examples
+```
