@@ -47,7 +47,7 @@ npx tailwindcss init
 ```
 
 
-create a folder to hold all your html and js files e.g. `public` 
+create a folder to hold all your html and js files e.g. `build` 
 ## 4. update your config file
 In the content section put the file path of your html
 
@@ -116,5 +116,6 @@ in django the output will be inside the static files e.g.                   `./s
 ## lastly
 
 ```bash
+npm run prettier
 npm run tailwind
 ```
