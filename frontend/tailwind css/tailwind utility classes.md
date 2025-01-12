@@ -135,6 +135,7 @@
 #### Transition
 
 - `transition duration-300 ease-in-out delay-150 `
+- `transform transition-transform duration-300 hover:scale-105` this increase the size when hovered
 
 #### Transformation
 

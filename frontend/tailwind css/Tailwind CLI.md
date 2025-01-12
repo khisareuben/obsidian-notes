@@ -56,7 +56,11 @@ In the content section put the file path of your html
 module.exports = {
   content: ["./build/**/*.{html,js}"],
   theme: {
-    extend: {},
+    extend: {
+	    colors: {
+		    coolblack: #002147
+	    }
+    },
   },
   plugins: [],
 }
@@ -118,4 +122,6 @@ in django the output will be inside the static files e.g.                   `./s
 ```bash
 npm run prettier
 npm run tailwind
+
+a logo for a coding company, a flying dragon, suttle and dark colors
 ```
