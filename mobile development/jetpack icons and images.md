@@ -1,0 +1,45 @@
+
+```kotlin
+Icon(  
+								//icon-name
+  imageVector = Icons.Default.ArrowDropDown,  
+  contentDescription = "Drop-Down Arrow",
+  tint = Color.Unspecified // this is to maintain the colors of the icon if you manually added it  
+)
+```
+
+
+| Icons          |                                                                                                                          |                |
+| -------------- | ------------------------------------------------------------------------------------------------------------------------ | -------------- |
+| Default icons  | ![Default icon image](https://developer.android.com/images/reference/androidx/compose/material/icons/icon-filled.svg)    | Icons.Default  |
+| Filled icons   | ![Filled icon image](https://developer.android.com/images/reference/androidx/compose/material/icons/icon-filled.svg)     | Icons.Filled   |
+| Outlined icons | ![Outlined icon image](https://developer.android.com/images/reference/androidx/compose/material/icons/icon-outlined.svg) | Icons.Outlined |
+| Rounded icons  | ![Rounded icon image](https://developer.android.com/images/reference/androidx/compose/material/icons/icon-rounded.svg)   | Icons.Rounded  |
+| Two tone icons | ![Two tone icon image](https://developer.android.com/images/reference/androidx/compose/material/icons/icon-two-tone.svg) | Icons.TwoTone  |
+| Sharp icons    | ![Sharp icon image](https://developer.android.com/images/reference/androidx/compose/material/icons/icon-sharp.svg)       | Icons.Sharp    |
+|                |                                                                                                                          |                |
+
+
+### images
+
+First you need to paste you image into the drawable folder in the `res` folder
+
+```kotlin
+painter = painterResource(id = R.drawable.imagename)
+```
+
+
+### CircularProgressIndicator
+
+This is the circular round moving bar/icon e.g. when loading online content
+
+```kotlin
+CircularProgressIndicator(
+	modifier = Modifier
+		.height(16.dp)
+		.width(16.dp)
+	strokewidth = 2.dp
+	color = Color.Cyan
+)
+
+```
