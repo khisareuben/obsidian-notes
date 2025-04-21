@@ -1,4 +1,8 @@
 
+```bash
+git config --global credential.helper store
+```
+
 The remote repository contain changes that you don't
 
 The error you're seeing occurs because your local repository is behind the remote repository. This usually happens when changes have been made to the remote repository that you don't have in your local copy. To resolve this, you need to pull the latest changes from the remote repository into your local repository before you can push your changes.
