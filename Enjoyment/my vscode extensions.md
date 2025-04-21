@@ -1,5 +1,7 @@
 #002147
 
+Ctrl + Alt + E - **emote**
+
 The best extension that made me like vscode
 1. **Prettier - Code formatter**
 2. **Python**
@@ -27,6 +29,6 @@ The best extension that made me like vscode
 Obisidian themes
 
 1. **Panic mode**
-2. 
+2. **Violet Evening**
 
 
