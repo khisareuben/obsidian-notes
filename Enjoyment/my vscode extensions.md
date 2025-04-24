@@ -28,7 +28,6 @@ The best extension that made me like vscode
 
 Obisidian themes
 
-1. **Panic mode**
-2. **Violet Evening**
+1. **Violet Evening**
 
 
