@@ -1,4 +1,4 @@
-
+This is just for personal entertainment
 To master machine learning and artificial intelligence (AI), a solid understanding of several key mathematical topics is essential. Here's a breakdown of the most important ones:
 
 1. **Linear Algebra**:
