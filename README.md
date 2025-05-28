@@ -13,3 +13,6 @@
 - Others
 
 ## Happy reading everyone 💻
+
+
+`adb connect 192.168.240.112:5555`
