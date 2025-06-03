@@ -83,3 +83,11 @@ In Jetpack Compose, the `Surface` composable is a versatile and essential compon
         Text("This Surface has custom padding and border")
     }
     ```
+
+
+
+- ViewModel and liveData
+- ConstraintLayout
+- TopAppBar
+- BottomAppBar & Navigation
+- Dialog Box/ AlertDialog
