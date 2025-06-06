@@ -6,34 +6,34 @@ Got it! Let's go step-by-step through the entire process of setting up your Tail
 
 First, ensure you have Node.js installed on your machine. Then, create a new project directory and navigate into it:
 
-bash
 
-```
+
+```bash
 mkdir my-tailwind-project
 cd my-tailwind-project
 ```
 
 Initialize a new Node.js project:
 
-bash
 
-```
+
+```bash
 npm init -y
 ```
 
 Install TailwindCSS, PostCSS, and Autoprefixer:
 
-bash
 
-```
+
+```bash
 npm install -D tailwindcss postcss autoprefixer
 ```
 
 Create the necessary configuration files for TailwindCSS:
 
-bash
 
-```
+
+```bash
 npx tailwindcss init -p
 ```
 
@@ -43,9 +43,9 @@ This will create a `tailwind.config.js` file and a `postcss.config.js` file in y
 
 Update the `tailwind.config.js` file to include the paths to your content files:
 
-js
 
-```
+
+```js
 module.exports = {
   content: [
     "./src/**/*.{html,js}",
@@ -61,7 +61,7 @@ module.exports = {
 
 Create a basic project structure. For example:
 
-```
+```bash
 my-tailwind-project/
 ├── src/
 │   ├── index.html
@@ -78,7 +78,7 @@ In your `styles.css` file, include the following:
 
 css
 
-```
+```bash
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -88,9 +88,9 @@ css
 
 Add a build script in your `package.json`:
 
-json
 
-```
+
+```json
 "scripts": {
   "build": "npx tailwindcss -i ./src/styles.css -o ./dist/styles.css --minify"
 }
@@ -98,9 +98,9 @@ json
 
 Now, run the build script to generate the compiled CSS:
 
-bash
 
-```
+
+```bash
 npm run build
 ```
 
@@ -108,9 +108,9 @@ npm run build
 
 Create a new repository on GitHub and push your project files to it. In your project directory, run:
 
-bash
 
-```
+
+```bash
 git init
 git add .
 git commit -m "Initial commit"
@@ -123,7 +123,7 @@ git push -u origin main
 
 Create a `.github/workflows` directory in your project and add a `github-pages.yml` file:
 
-yaml
+
 
 ```yaml
 name: Build and Deploy
@@ -185,9 +185,9 @@ It looks like the error you're encountering is due to the Personal Access Token 
 
 Here's an example of how to update your token in the repository settings:
 
-bash
 
-```
+
+```bash
 git remote set-url origin https://<your_username>:<new_token>@github.com/khisareuben/sirfranco-website.git
 ```
 
@@ -195,9 +195,9 @@ Replace `<your_username>` with your GitHub username and `<new_token>` with the n
 
 After updating the token, try pushing your changes again:
 
-bash
 
-```
+
+```bash
 git push origin main
 ```
 
@@ -206,9 +206,9 @@ This should resolve the error and allow you to push your workflow changes to Git
 
 1. **rigger the Workflow**: Push a commit to the `main` branch to trigger the workflow. This will build your project and deploy it to the `gh-pages` branch.
     
-    bash
     
-    ```
+    
+    ```bash
     git add .
     git commit -m "Deploy to GitHub Pages"
     git push origin main
@@ -240,18 +240,18 @@ Great to hear you successfully deployed your site to GitHub Pages! When you clon
 
 1. **Clone the Repository**: Use the following command to clone your repository:
     
-    bash
     
-    ```
+    
+    ```bash
     git clone https://github.com/khisareuben/sirfranco-website.git
     cd sirfranco-website
     ```
     
 2. **Install Dependencies**: Install the necessary npm packages by running:
     
-    bash
     
-    ```
+    
+    ```bash
     npm install
     ```
     
@@ -259,9 +259,9 @@ Great to hear you successfully deployed your site to GitHub Pages! When you clon
     
 3. **Build Your Project**: Use the build script defined in your `package.json` to compile your CSS:
     
-    bash
-    
-    ```
+        
+    ```bash
+
     npm run build
     ```
     
