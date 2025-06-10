@@ -16,6 +16,7 @@
 - Macbook air - ksh 200,000
 - Xiaomi Black Shark 3 12GB – 256GB - ksh 70,000
 - Xiaomi G34WQi 34'' - ksh 45,000
+- ZTE Nubia Neo 2 - ksh 35,000
 
 
 ```javascript
