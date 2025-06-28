@@ -11,46 +11,9 @@
 | 14:30-15:00 | —               | Review, journaling, wind down    |
 
 
+ctrl + B - open documentation
 
 
-
-
-
-- Module 13 Navigation
-
-[6:43:05](https://www.youtube.com/watch?v=U5dE-_E1wsg&t=24185s) Navigation Drawer in jetpack compose
-
-- Module 14 Circular Progress Indicator
-
-[7:06:02](https://www.youtube.com/watch?v=U5dE-_E1wsg&t=25562s) Circular Progress Indicator
-
-- Module 15 Pull to Refresh
-
-[7:18:01](https://www.youtube.com/watch?v=U5dE-_E1wsg&t=26281s) Pull To Refresh
-
-- Module 16 Search Bar
-
-[7:44:26](https://www.youtube.com/watch?v=U5dE-_E1wsg&t=27866s) Search Bar in jetpack compose
-
-- Module 17 Segmented Button in jetpack compose
-
-[8:02:25](https://www.youtube.com/watch?v=U5dE-_E1wsg&t=28945s) Segmented Button
-
-- Module 18 Slider in jetpack compose
-
-[8:20:30](https://www.youtube.com/watch?v=U5dE-_E1wsg&t=30030s) Slider
-
-- Module 19 SnackBar
-
-[8:27:33](https://www.youtube.com/watch?v=U5dE-_E1wsg&t=30453s) SnackBar in the jetpack compose
-
-- Module 20 Badges
-
-[8:42:46](https://www.youtube.com/watch?v=U5dE-_E1wsg&t=31366s) Badges in the jetpack compose
-
-- Module 21 Switch
-
-[8:57:45](https://www.youtube.com/watch?v=U5dE-_E1wsg&t=32265s) Switch in the jetpack compose
 
 - Module 22 Date Picker
 
@@ -59,18 +22,6 @@
 - Module 23 Time Picker
 
 [9:33:11](https://www.youtube.com/watch?v=U5dE-_E1wsg&t=34391s) Time Picker in the jetpack compose
-
-- Module 24 Bottom Bar
-
-[10:07:04](https://www.youtube.com/watch?v=U5dE-_E1wsg&t=36424s) Bottom Bar in the jetpack compose
-
-- Module 25 Top App Bar
-
-[10:27:46](https://www.youtube.com/watch?v=U5dE-_E1wsg&t=37666s) Top App Bar in the jetpack compose
-
-- Module 26 Navigation
-
-[10:45:13](https://www.youtube.com/watch?v=U5dE-_E1wsg&t=38713s) Navigation in jetpack compose
 
 - Module 27 Animation
 
