@@ -15,13 +15,7 @@ ctrl + B - open documentation
 
 
 
-- Module 22 Date Picker
 
-[9:05:20](https://www.youtube.com/watch?v=U5dE-_E1wsg&t=32720s) Date Picker in the jetpack compose
-
-- Module 23 Time Picker
-
-[9:33:11](https://www.youtube.com/watch?v=U5dE-_E1wsg&t=34391s) Time Picker in the jetpack compose
 
 - Module 27 Animation
 
