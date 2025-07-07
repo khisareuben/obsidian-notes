@@ -23,9 +23,9 @@ The **SHA-1 key** is a digital fingerprint of your app's signing certificate. Fi
     
 2. Go to the **Gradle** tab (right side).
     
-3. Navigate to: `:app > Tasks > android > signingReport`
+3. Navigate to: `Click on the Execute Gradle task Button` the icon looks like youtube icon/ play icon
     
-4. Double-click `signingReport`.
+4. Type in `signingReport` the click Enter
     
 5. Look in the **Run** window for your SHA-1 (debug and release).
     
