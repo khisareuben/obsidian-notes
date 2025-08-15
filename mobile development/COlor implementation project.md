@@ -24,9 +24,9 @@ Where:
 
 ### 1. Define Priority Enum
 
-kotlin
 
-```
+```kotlin
+
 enum class Priority(val label: String, val color: Color) {
     HIGH("High", Color.Red),
     MEDIUM("Medium", Color.Yellow),
@@ -36,9 +36,9 @@ enum class Priority(val label: String, val color: Color) {
 
 ### 2. Create State in Your Composable
 
-kotlin
 
-```
+
+```kotlin
 @Composable
 fun PrioritySelector(
     modifier: Modifier = Modifier,
@@ -101,9 +101,9 @@ fun PrioritySelector(
 
 ### 3. Use It in Your Screen
 
-kotlin
 
-```
+
+```kotlin
 @Composable
 fun TaskScreen() {
     var priority by remember { mutableStateOf(Priority.MEDIUM) }
