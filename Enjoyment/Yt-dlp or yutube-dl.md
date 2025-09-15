@@ -46,6 +46,14 @@ yt-dlp -f FORMAT_CODE "https://www.youtube.com/watch?v=VIDEO_ID"
 
 To download all videos in a playlist:
 
+```shell
+yt-dlp --yes-playlist "https://www.youtube.com/playlist?list=PLAYLIST_ID"
+
+//with best quality
+yt-dlp --yes-playlist -f "bv*+ba/best" https://www.youtube.com/watch?v=eq-yfNZ8pXw&list=PL_2gaMQW5HNZgfxtp2p-tlUp3zfqx19kk
+
+
+```
 
 
 ```bash
@@ -92,3 +100,65 @@ You can explore more on AlternativeTo’s yt-dlp page — it lists over 100 tool
 | **Open Video Downloader** | Electron-based GUI for yt-dlp. Supports batch downloads. | Windows, macOS |
 | **MacYTDL**               | AppleScript-based GUI for macOS users.                   | macOS          |
 | **yt-dlp Web UI**         | Lightweight web interface for yt-dlp.                    | Docker-based   |
+
+
+### Step 1: List Available Formats
+
+Run this to see all video/audio options:
+
+
+
+```bash
+yt-dlp -F "https://www.youtube.com/watch?v=VIDEO_ID"
+```
+
+This shows format codes like `137`, `22`, `140`, etc., along with resolution, codec, and whether it's video-only or audio-only.
+
+### 🎯 Step 2: Choose a Specific Format
+
+Use the format code from the list:
+
+
+
+```bash
+yt-dlp -f 22 "https://www.youtube.com/watch?v=VIDEO_ID"
+```
+
+This downloads format `22`, which might be 720p MP4 with audio.
+
+### 🧠 Advanced Selection (Best Video + Best Audio)
+
+If you want to **combine best video and audio**, use:
+
+
+
+```bash
+yt-dlp -f "bv+ba" "https://www.youtube.com/watch?v=VIDEO_ID"
+```
+
+- `bv` = best video-only stream
+    
+- `ba` = best audio-only stream
+    
+- yt-dlp will **merge** them into one file
+    
+
+### 📏 Filter by Resolution or Codec
+
+Want to cap resolution at 720p and use MP4?
+
+
+
+```bash
+yt-dlp -f "bv*[height<=720][ext=mp4]+ba[ext=m4a]" "https://www.youtube.com/watch?v=VIDEO_ID"
+```
+
+This grabs the best MP4 video ≤720p and M4A audio.
+
+### 🧰 Bonus Flags
+
+- `--merge-output-format mp4` → force final file to be MP4
+    
+- `-S "res:720"` → sort formats by resolution
+    
+- `--format-sort "res,ext"` → prioritize resolution and file type
