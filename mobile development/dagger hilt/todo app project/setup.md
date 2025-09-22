@@ -179,7 +179,8 @@ object DatabaseModule {
 object RepositoryModule {  
   
     @Provides  
-    @Singleton    fun provideTodoRepository(dao: TodoDao): TodoRepository {  
+    @Singleton    
+    fun provideTodoRepository(dao: TodoDao): TodoRepository {  
         return TodoRepository(dao)  
     }  
 }
