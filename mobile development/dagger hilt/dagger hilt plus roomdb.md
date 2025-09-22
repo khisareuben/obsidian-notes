@@ -6,6 +6,35 @@
 
 ### ✅ 1. Add Koin Dependencies
 
+
+```bash
+
+com.example.todoapp/
+├── data/
+│   ├── local/
+│   │   ├── TodoDao.kt
+│   │   ├── TodoDatabase.kt
+│   │   └── entities/
+│   │       └── Todo.kt
+│   └── repository/
+│       └── TodoRepository.kt
+│
+├── di/
+│   └── AppModule.kt
+│
+├── ui/
+│   ├── TodoViewModel.kt
+│   └── screens/
+│       └── TodoScreen.kt
+│
+├── MainActivity.kt
+└── TodoApp.kt
+
+
+```
+
+
+
 In your `build.gradle` (app-level):
 
 #### ✅ 1. **Create the columns of the database** : These are the different sections that will be in your database /data

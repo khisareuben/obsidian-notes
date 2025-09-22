@@ -1,5 +1,5 @@
 # Contents
-**This contains all my notes and knowledge that i have accumulated since i started programing**
+**This contains all my notes and knowledge that i have accumulated since i started programming**
 
 **my notes include:**
 - Data structure and algorithms
