@@ -147,9 +147,9 @@ class MyViewModel @Inject constructor(
 
 
 
-## What Is a Koin Module?
+## What Is a Dagger hilt?
 
-A **Koin module** is like a **recipe** that tells Koin how to create and provide the things your app needs—like your database, DAO, repository, and ViewModel.
+A Dagger hilt module is like a **recipe** that tells Koin how to create and provide the things your app needs—like your database, DAO, repository, and ViewModel.
 
 You write this recipe once, and Koin uses it to "cook up" the objects whenever your app asks for them.
 
