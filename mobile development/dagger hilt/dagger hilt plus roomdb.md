@@ -9,26 +9,43 @@
 
 ```bash
 
-com.example.todoapp/
+com.harold.notesapp/
 ├── data/
 │   ├── local/
-│   │   ├── TodoDao.kt
-│   │   ├── TodoDatabase.kt
-│   │   └── entities/
-│   │       └── Todo.kt
+│   │   ├── entity/
+│   │   │   └── NoteEntity.kt
+│   │   ├── dao/
+│   │   │   └── NoteDao.kt
+│   │   └── NoteDatabase.kt
+│   ├── mapper/
+│   │   └── NoteMapper.kt         ← NoteEntity ↔ Domain Note
 │   └── repository/
-│       └── TodoRepository.kt
+│       └── NoteRepositoryImpl.kt ← Implements domain interface
 │
-├── di/
-│   └── AppModule.kt
+├── domain/
+│   ├── model/
+│   │   └── Note.kt               ← Pure domain model
+│   ├── repository/
+│   │   └── NoteRepository.kt     ← Interface
+│   └── usecase/
+│       ├── GetNotesUseCase.kt
+│       ├── AddNoteUseCase.kt
+│       ├── UpdateNoteUseCase.kt
+│       └── DeleteNoteUseCase.kt
 │
-├── ui/
-│   ├── TodoViewModel.kt
-│   └── screens/
-│       └── TodoScreen.kt
+├── presentation/
+│   ├── notes_list/
+│   │   ├── NotesListScreen.kt
+│   │   └── NotesListViewModel.kt ← Injects GetNotesUseCase
+│   ├── note_detail/
+│   │   ├── NoteDetailScreen.kt
+│   │   └── NoteDetailViewModel.kt ← Injects Update/Delete UseCases
+│   └── add_note/
+│       ├── AddNoteScreen.kt
+│       └── AddNoteViewModel.kt   ← Injects AddNoteUseCase
 │
-├── MainActivity.kt
-└── TodoApp.kt
+└── di/
+    └── AppModule.kt              ← Hilt bindings for UseCases, Repo, DAO
 
 
 ```

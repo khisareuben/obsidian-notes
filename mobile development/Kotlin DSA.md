@@ -45,6 +45,7 @@ class Queue<T> {
     fun peek(): T? = items.firstOrNull()
     fun isEmpty() = items.isEmpty()
     fun size() = items.size
+    fun printAll() = println("Queue contents: ${items.joinToString(" -> ")}")
 }
 
 fun main() {
@@ -55,6 +56,7 @@ fun main() {
 
     println("Front: ${queue.peek()}")   // A
     println("Dequeue: ${queue.dequeue()}") // A
+    queue.printAll() // Queue contents: B -> C
     println("Size: ${queue.size()}")    // 2
 }
 
