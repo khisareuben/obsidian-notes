@@ -15,6 +15,7 @@ class Stack<T> {
     fun peek(): T? = items.lastOrNull()
     fun isEmpty() = items.isEmpty()
     fun size() = items.size
+    fun printAll() = println("Stack contents: ${items.joinToString(" -> ")}")
 }
 
 fun main() {
@@ -23,6 +24,7 @@ fun main() {
     stack.push(20)
     stack.push(30)
 
+	stack.printAll()
     println("Top: ${stack.peek()}")     // 30
     println("Pop: ${stack.pop()}")      // 30
     println("Size: ${stack.size()}")    // 2
@@ -54,6 +56,7 @@ fun main() {
     queue.enqueue("B")
     queue.enqueue("C")
 
+	println("Size: ${queue.size()}")
     println("Front: ${queue.peek()}")   // A
     println("Dequeue: ${queue.dequeue()}") // A
     queue.printAll() // Queue contents: B -> C
