@@ -18,15 +18,15 @@ com.harold.notesapp/
 │   │   │   └── NoteDao.kt
 │   │   └── NoteDatabase.kt
 │   ├── mapper/
-│   │   └── NoteMapper.kt         ← NoteEntity ↔ Domain Note
+│   │   └── NoteMapper.kt
 │   └── repository/
-│       └── NoteRepositoryImpl.kt ← Implements domain interface
+│       └── NoteRepositoryImpl.kt
 │
 ├── domain/
 │   ├── model/
-│   │   └── Note.kt               ← Pure domain model
+│   │   └── Note.kt
 │   ├── repository/
-│   │   └── NoteRepository.kt     ← Interface
+│   │   └── NoteRepository.kt
 │   └── usecase/
 │       ├── GetNotesUseCase.kt
 │       ├── AddNoteUseCase.kt
@@ -36,16 +36,19 @@ com.harold.notesapp/
 ├── presentation/
 │   ├── notes_list/
 │   │   ├── NotesListScreen.kt
-│   │   └── NotesListViewModel.kt ← Injects GetNotesUseCase
-│   ├── note_detail/
-│   │   ├── NoteDetailScreen.kt
-│   │   └── NoteDetailViewModel.kt ← Injects Update/Delete UseCases
-│   └── add_note/
-│       ├── AddNoteScreen.kt
-│       └── AddNoteViewModel.kt   ← Injects AddNoteUseCase
+│   │   └── NotesListViewModel.kt
+│   ├── add_note/
+│   │   ├── AddNoteScreen.kt
+│   │   └── AddNoteViewModel.kt
+│   └── note_detail/
+│       ├── NoteDetailScreen.kt
+│       └── NoteDetailViewModel.kt
 │
-└── di/
-    └── AppModule.kt              ← Hilt bindings for UseCases, Repo, DAO
+├── di/
+│   └── AppModule.kt
+│
+├── MainActivity.kt
+└── NotesApplication.kt
 
 
 ```

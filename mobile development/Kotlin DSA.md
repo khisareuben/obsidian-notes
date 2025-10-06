@@ -300,30 +300,34 @@ class LinkedList<T> {
     }
 
     // Add element to beginning
-    fun prepend(data: T) {
-        val newNode = Node(data)
-        newNode.next = head
-        head = newNode
-    }
+    fun prepend(data: T) {  
+	    val newNode = Node(data)  
+	    if (head == null) {  
+	        head = newNode  
+	    } else {  
+	        newNode.next = head  
+	        head = newNode  
+	    }  
+	}
 
     // Delete first occurrence of a value
-    fun delete(data: T) {
-        if (head == null) return
-
-        if (head?.data == data) {
-            head = head?.next
-            return
-        }
-
-        var current = head
-        while (current?.next != null) {
-            if (current.next?.data == data) {
-                current.next = current.next?.next
-                return
-            }
-            current = current.next
-        }
-    }
+    fun delete(data: T) {  
+	    if (head == null) return  
+	    if (head?.data == data) {  
+	        head = head?.next  
+	        return  
+	    }  
+	    var current = head?.next  
+	    var before = head  
+	    while (current != null) {  
+	        if (current.data == data) {  
+	            before?.next = current.next  
+	            return  
+	        }  
+	        current = current.next  
+	        before = before?.next  
+	    }  
+	}
 
     // Print all elements
     fun printList() {
@@ -361,78 +365,112 @@ fun main() {
 
 
 ```kotlin
-class Node<T>(var data: T) {
-    var next: Node<T>? = null
-    var prev: Node<T>? = null
+
+class DNode<T>(var data: T) {  
+    var next: DNode<T>? = null  
+    var prev: DNode<T>? = null  
+}  
+  
+class DoublyLinkedLIst <T> {  
+  
+    private var head: DNode<T>? = null  
+  
+    fun append(data: T) {  
+        val newNode = DNode(data)  
+        if (head == null){  
+            head = newNode  
+        } else {  
+            var current = head  
+            while (current?.next != null) {  
+                current = current.next  
+            }  
+            current?.next = newNode  
+            newNode.prev = current  
+        }  
+  
+  
+    }  
+  
+    fun prepend(data: T) {  
+        val newNode = DNode(data)  
+        if (head == null) {  
+            head = newNode  
+        } else {  
+            val current = head  
+            current?.prev = newNode  
+            newNode.next = current  
+            head = newNode  
+        }  
+    }  
+  
+    fun delete(data: T) {  
+        if (head == null) return  
+  
+        if (head?.data == data) {  
+            head = head?.next  
+            return  
+        }  
+  
+        var current = head?.next  
+        var before = head  
+        while (current != null) {  
+            if (current.data == data) {  
+                before?.next = current.next  
+                current.next?.prev = before  
+                return  
+            }  
+            current = current.next  
+            before = before?.next  
+        }  
+    }  
+  
+    fun forward() {  
+        var current = head  
+        while (current != null) {  
+            print("${current.data} <->")  
+            current = current.next  
+        }  
+        println()  
+    }  
+  
+    fun printList() {  
+        var current = head  
+        while (current != null) {  
+            print("${current.data} <-> ")  
+            current = current.next  
+        }  
+        println()  
+    }  
+  
+    fun backward() {  
+        var current = head  
+        while (current?.next != null) {  
+            current = current.next  
+        }  
+        while (current != null) {  
+            print("${current.data} <->")  
+            current = current.prev  
+        }  
+        println()  
+    }  
+  
+}  
+  
+fun main() {  
+    val list = DoublyLinkedLIst<Int>()  
+    list.append(10)  
+    list.append(20)  
+    list.append(30)  
+    list.append(40)  
+    list.append(50)  
+    list.prepend(5)  
+    list.printList()  
+    //list.forward()  
+    //list.backward()    
+    list.delete(30)  
+    list.printList()  
 }
 
-class DoublyLinkedList<T> {
-    private var head: Node<T>? = null
-    private var tail: Node<T>? = null
-
-    fun append(data: T) {
-        val newNode = Node(data)
-        if (head == null) {
-            head = newNode
-            tail = newNode
-        } else {
-            tail?.next = newNode
-            newNode.prev = tail
-            tail = newNode
-        }
-    }
-
-    fun prepend(data: T) {
-        val newNode = Node(data)
-        if (head == null) {
-            head = newNode
-            tail = newNode
-        } else {
-            newNode.next = head
-            head?.prev = newNode
-            head = newNode
-        }
-    }
-
-    fun delete(data: T) {
-        var current = head
-        while (current != null) {
-            if (current.data == data) {
-                if (current.prev != null) {
-                    current.prev?.next = current.next
-                } else {
-                    head = current.next
-                }
-
-                if (current.next != null) {
-                    current.next?.prev = current.prev
-                } else {
-                    tail = current.prev
-                }
-                return
-            }
-            current = current.next
-        }
-    }
-
-    fun printForward() {
-        var current = head
-        while (current != null) {
-            print("${current.data} <-> ")
-            current = current.next
-        }
-        println("null")
-    }
-
-    fun printBackward() {
-        var current = tail
-        while (current != null) {
-            print("${current.data} <-> ")
-            current = current.prev
-        }
-        println("null")
-    }
-}
 ```
 
 ## 🧪 Sample Linked List Usage
