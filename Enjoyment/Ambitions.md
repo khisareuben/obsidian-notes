@@ -16,8 +16,12 @@
 - Macbook air - ksh 200,000
 - Xiaomi Black Shark 3 12GB – 256GB - ksh 70,000
 - Xiaomi G34WQi 34'' - ksh 45,000
-- ZTE Nubia Neo 2 - ksh 35,000
-
+- ZTE Nubia Neo 2 - ksh 30,000
+- Arctis-Nova-3X headset
+- Razer BlackShark V3 Gaming Headphone - ksh 16,859
+- HyperX Cloud III S Wireless Gaming Headphones - ksh 19,402
+- Razer Kaira HyperSpeed Wireless Gaming Headset - ksh 11,263
+- Lenovo IdeaPad Slim 3 15IRH8 Laptop, 15.6" FHD TN Display, Intel Core i7-13620H Processor, 16GB RAM, 512GB SSD - 66,697
 
 ```javascript
 
