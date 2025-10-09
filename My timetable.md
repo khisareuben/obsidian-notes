@@ -1,14 +1,15 @@
 
-| Time        | Subject         | Activity                         |
-| ----------- | --------------- | -------------------------------- |
-| 07:00-08:30 | Kotlin          | Core concepts, coding practice   |
-| 08:30-08:45 | —               | Short break (stretch, water)     |
-| 08:45-10:15 | Jetpack Compose | UI layout, animations, hands-on  |
-| 10:15-10:30 | —               | Break (snack, fresh air)         |
-| 10:30-12:00 | Kotlin          | Debugging, building small apps   |
-| 12:00-13:00 | —               | Lunch + rest (no screen time!)   |
-| 13:00-14:30 | Jetpack Compose | Navigation, theming, Lottie etc. |
-| 14:30-15:00 | —               | Review, journaling, wind down    |
+| Time         | Subject                       | Activity                            |
+| ------------ | ----------------------------- | ----------------------------------- |
+| 6:20         | Getting ready                 |                                     |
+| 07:00-11:00  | Kotlin                        | Jetpack compose projects            |
+| 11:00- 12:00 | DSA                           | Data Structures and algorithms      |
+| 12:00-1:00   | Shadowing                     | Practice speaking                   |
+| 1:00-2:30    | News and General Research     | Whats happening around the world    |
+| 2:30-3:00    | Personal space                | Just doing anything/nothing         |
+| 3:00-5:00    | Bible Studies and Prayers     | Seeking God's mercy and forgiveness |
+| 5:00-7:00    | Cleaning                      | Doing cleaning                      |
+| 7:00-10:00   | Entertainment(reading manhwa) | Anime/Manhwa                        |
 
 
 ctrl + B - open documentation
