@@ -176,7 +176,7 @@ object AppModule {
 
 	@Provides  
 	@Singleton  
-	fun provideRetrofit(): Retrofit {  
+	fun provideRetrofit(): Retrofit {
 	    return Retrofit.Builder()  
 	        .baseUrl("https://jsonplaceholder.typicode.com")  
 	        .addConverterFactory(GsonConverterFactory.create())  
