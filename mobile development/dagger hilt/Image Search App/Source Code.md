@@ -44,7 +44,8 @@ interface ImageRepository {
 object DataModule {  
     // https://pixabay.com/api/?key=40308333-07c19e899666cb68334ed3a46&q=yellow+flowers&image_type=photo&pretty=true  
     @Provides  
-    @Singleton    fun provideRetrofit(): Retrofit {  
+    @Singleton    
+    fun provideRetrofit(): Retrofit {  
         return Retrofit.Builder()  
             .baseUrl("https://pixabay.com/")  
             .addConverterFactory(GsonConverterFactory.create())  
