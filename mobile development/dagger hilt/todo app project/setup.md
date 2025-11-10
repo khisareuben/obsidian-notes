@@ -160,7 +160,8 @@ Register it in `AndroidManifest.xml`:
 object DatabaseModule {  
   
     @Provides  
-    @Singleton    fun provideDatabase(@ApplicationContext context: Context): TodoDatabase {  
+    @Singleton    
+    fun provideDatabase(@ApplicationContext context: Context): TodoDatabase {  
         return Room.databaseBuilder(  
             context,  
             TodoDatabase::class.java,  
