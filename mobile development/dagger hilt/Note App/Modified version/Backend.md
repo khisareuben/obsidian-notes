@@ -1,4 +1,5 @@
 
+
 - Create your project structure; data, domain, presentation, di
 
 
@@ -15,7 +16,7 @@ data class NoteEntity(
     @PrimaryKey(autoGenerate = true)  
     @ColumnInfo("id") val id:Int = 0, //changing the column names  
     @ColumnInfo("title") val title: String,  
-    @ColumnInfo("desc") val desc: String  
+    @ColumnInfo("content") val content: String  
 ) {  
     constructor() : this(0, "", "")  
 }
@@ -109,7 +110,7 @@ Add it in the `AndroidManifest.xml`
 data class Note(  
     val id: Int,  
     val title: String,  
-    val desc: String  
+    val content: String  
 )
 
 ```
@@ -134,11 +135,11 @@ interface NoteRepository {
 ```kotlin
 
 fun Note.toNoteEntity(): NoteEntity {  
-    return NoteEntity(id, title, desc)  
+    return NoteEntity(id, title, content)  
 }  
   
 fun NoteEntity.toNote(): Note {  
-    return Note(id, title, desc)  
+    return Note(id, title, content)  
 }
 
 ```
