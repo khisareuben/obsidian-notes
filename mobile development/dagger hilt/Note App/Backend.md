@@ -114,7 +114,7 @@ data class Note(
 
 ```
 
-`../NoteRepository.kt`
+`domain/NoteRepository.kt`
 ```kotlin
 
 interface NoteRepository {  
