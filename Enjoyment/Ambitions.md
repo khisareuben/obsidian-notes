@@ -1,6 +1,6 @@
 ## My future ultimate gaming setup
 
-
+- ¼ acre plot
 - Redragon K631 keyboard - ksh 13,000
 - Ultrawide Monitor-Arm Heavy Duty - ksh 30,000
 - VIVO Vertebrae Cable Management Kit - ksh 15,000
