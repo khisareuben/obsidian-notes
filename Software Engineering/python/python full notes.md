@@ -3,22 +3,25 @@ This will all be the full notes on python basics and most of it will be shortene
 
 # Table of Contents
 
-| [[python full notes#variables]]            | [[python full notes#Typecasting]]                 | [[python full notes#User Input]]                   |
-| ------------------------------------------ | ------------------------------------------------- | -------------------------------------------------- |
-| [[python full notes#arithmetic operators]] | [[python full notes#if statement]]                | [[python full notes#Match-case statement(switch)]] |
-| [[python full notes#logical operators]]    | [[python full notes#conditional expressions]]     | [[python full notes#string indexing]]              |
-| [[python full notes#format specifiers]]    | [[python full notes#while loop]]                  | [[python full notes#for loop]]                     |
-| [[python full notes#nested loop]]          | [[python full notes#collection]]                  | [[python full notes#2D list]]                      |
-| [[python full notes#Dictionary]]           | [[python full notes#random module]]               | [[python full notes#functions]]                    |
-| [[python full notes#variable scope]]       | [[python full notes#Membership operators]]        | [[python full notes#list comprehension]]           |
-| [[python full notes#modules]]              | [[python full notes#Object oriented programming]] | [[python full notes#Inheritance]]                  |
-| [[python full notes#Super function]]       | [[python full notes#polymorphism]]                | [[python full notes#static methods]]               |
-| [[python full notes#Class methods]]        | [[python full notes#magic methods]]               | [[python full notes#property decorators]]          |
-| [[python full notes#Decorators]]           | [[python full notes#exception]]                   | [[python full notes#File Handling]]                |
-| [[python full notes#1. File detection]]    | [[python full notes#2. Writing files]]            | [[python full notes#3. Reading files]]             |
+# Table of Contents
+
+| 1. [[python full notes#variables]] | 2. [[python full notes#Typecasting]] | 3. [[python full notes#User Input]] |
+|------------------------------------|--------------------------------------|-------------------------------------|
+| 4. [[python full notes#arithmetic operators]] | 5. [[python full notes#if statement]] | 6. [[python full notes#Match-case statement(switch)]] |
+| 7. [[python full notes#logical operators]] | 8. [[python full notes#conditional expressions]] | 9. [[python full notes#string indexing]] |
+| 10. [[python full notes#format specifiers]] | 11. [[python full notes#while loop]] | 12. [[python full notes#for loop]] |
+| 13. [[python full notes#nested loop]] | 14. [[python full notes#collection]] | 15. [[python full notes#2D list]] |
+| 16. [[python full notes#Dictionary]] | 17. [[python full notes#random module]] | 18. [[python full notes#functions]] |
+| 19. [[python full notes#variable scope]] | 20. [[python full notes#Membership operators]] | 21. [[python full notes#list comprehension]] |
+| 22. [[python full notes#modules]] | 23. [[python full notes#Object oriented programming]] | 24. [[python full notes#Inheritance]] |
+| 25. [[python full notes#Super function]] | 26. [[python full notes#polymorphism]] | 27. [[python full notes#static methods]] |
+| 28. [[python full notes#Class methods]] | 29. [[python full notes#magic methods]] | 30. [[python full notes#property decorators]] |
+| 31. [[python full notes#Decorators]] | 32. [[python full notes#exception]] | 33. [[python full notes#File Handling]] |
+| 34. [[python full notes#1. File detection]] | 35. [[python full notes#2. Writing files]] | 36. [[python full notes#3. Reading files]] |
 
 
 
+To print the output on the screen
 
 ```python
 print("I like ramen")
