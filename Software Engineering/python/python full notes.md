@@ -2,18 +2,21 @@
 This will all be the full notes on python basics and most of it will be shortened but still have the key things to learn and practice python code.
 
 # Table of Contents
-[[python full notes#variables]]   · [[python full notes#Typecasting]] · [[python full notes#User Input]]  
-[[python full notes#arithmetic operators]] · [[python full notes#if statement]] · [[python full notes#Match-case statement(switch)]]  
-[[python full notes#logical operators]] · [[python full notes#conditional expressions]] · [[python full notes#string indexing]]  
-[[python full notes#format specifiers]] · [[python full notes#while loop]] · [[python full notes#for loop]]  
-[[python full notes#nested loop]] · [[python full notes#collection]] · [[python full notes#2D list]]  
-[[python full notes#Dictionary]] · [[python full notes#random module]] · [[python full notes#functions]]  
-[[python full notes#variable scope]] · [[python full notes#Membership operators]] · [[python full notes#list comprehension]]  
-[[python full notes#modules]] · [[python full notes#Object oriented programming]] · [[python full notes#Inheritance]]  
-[[python full notes#Super function]] · [[python full notes#polymorphism]] · [[python full notes#static methods]]  
-[[python full notes#Class methods]] · [[python full notes#magic methods]] · [[python full notes#property decorators]]  
-[[python full notes#Decorators]] · [[python full notes#exception]] · [[python full notes#File Handling]]  
-[[python full notes#1. File detection]] · [[python full notes#2. Writing files]] · [[python full notes#3. Reading files]]
+
+| [[python full notes#variables]]            | [[python full notes#Typecasting]]                 | [[python full notes#User Input]]                   |
+| ------------------------------------------ | ------------------------------------------------- | -------------------------------------------------- |
+| [[python full notes#arithmetic operators]] | [[python full notes#if statement]]                | [[python full notes#Match-case statement(switch)]] |
+| [[python full notes#logical operators]]    | [[python full notes#conditional expressions]]     | [[python full notes#string indexing]]              |
+| [[python full notes#format specifiers]]    | [[python full notes#while loop]]                  | [[python full notes#for loop]]                     |
+| [[python full notes#nested loop]]          | [[python full notes#collection]]                  | [[python full notes#2D list]]                      |
+| [[python full notes#Dictionary]]           | [[python full notes#random module]]               | [[python full notes#functions]]                    |
+| [[python full notes#variable scope]]       | [[python full notes#Membership operators]]        | [[python full notes#list comprehension]]           |
+| [[python full notes#modules]]              | [[python full notes#Object oriented programming]] | [[python full notes#Inheritance]]                  |
+| [[python full notes#Super function]]       | [[python full notes#polymorphism]]                | [[python full notes#static methods]]               |
+| [[python full notes#Class methods]]        | [[python full notes#magic methods]]               | [[python full notes#property decorators]]          |
+| [[python full notes#Decorators]]           | [[python full notes#exception]]                   | [[python full notes#File Handling]]                |
+| [[python full notes#1. File detection]]    | [[python full notes#2. Writing files]]            | [[python full notes#3. Reading files]]             |
+
 
 
 
@@ -21,7 +24,7 @@ This will all be the full notes on python basics and most of it will be shortene
 print("I like ramen")
 ```
 
-[[python full notes#variables]]#### variables
+#### variables
 variable is a container for a value(string, integer, float, boolean)
 
 ```python
