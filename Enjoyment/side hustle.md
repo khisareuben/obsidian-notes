@@ -101,3 +101,5 @@ This way, you can realistically start earning within weeks, even while studying.
 | **Web Scraping**       | **BeautifulSoup or Scrapy** | These are the go‑to libraries for extracting data from websites. Once you master one, you can do most scraping jobs.                             | Collecting product prices, gathering research data                |
 | **Automation**         | **Selenium**                | Used for automating browsers. It’s the main tool for tasks like filling forms or scraping sites that need login.                                 | Automating repetitive website tasks                               |
 | **Data Visualization** | **Matplotlib**              | The classic library for charts/graphs. If you stick to Matplotlib, you can cover most visualization needs.                                       | Creating charts for reports, dashboards                           |
+|                        |                             |                                                                                                                                                  |                                                                   |
+

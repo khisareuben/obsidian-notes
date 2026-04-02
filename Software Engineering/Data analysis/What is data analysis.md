@@ -28,7 +28,7 @@ You can practice with any CSV file you have offline. For example, if you have `d
 
 python
 
-```
+```python
 import pandas as pd
 
 df = pd.read_csv("/home/hrmoose/Downloads/data.csv")
@@ -43,7 +43,7 @@ Try simple operations:
 
 python
 
-```
+```python
 # Summary statistics
 df.describe()
 
@@ -60,7 +60,7 @@ Use matplotlib or seaborn:
 
 python
 
-```
+```python
 import matplotlib.pyplot as plt
 import seaborn as sns
 
