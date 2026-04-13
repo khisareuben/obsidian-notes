@@ -34,6 +34,7 @@ scrapy genspider bookspider books.toscrape.com
 go to `scrapy.cfg` and add this `shell = ipython` to make it easier to read the output. Install `python3 install ipython` first
 `scrapy shell` command to start it
 **NOTE:** This is just for practice so you will have to write the code in the `bookspider.py` `parse()` function and you'll have to go to the browser and inspect it to find what you are looking for
+The shell is used for preview purposes to make sure that the commands work
 
 `scrapy shell`
 ```zsh
@@ -91,9 +92,10 @@ class BookspiderSpider(scrapy.Spider):
             yield response.follow(next_page_url, callback=self.parse)
 
 ```
+`> scrapy crawl bookspider`  to run the file
 
 #### Going into the details section of a book(product)
-Now we will be diving into the details link of a single book and getting more data about it
+Now we will be diving into the details link of a single book and getting more data about it and then looping through all the other books until nothing is left
 
 ```python
 
@@ -174,72 +176,329 @@ class BookspiderSpider(scrapy.Spider):
 
 
 ```
+`scrapy crawl bookspider -O bookdata.csv`  to run and put the data into a csv file
 
 
-## 🧭 Core Concepts of XPath
 
-- **Absolute vs Relative Paths**
+# Cleaning Data with Items and Item pipeline
+
+This is creating an organized form of the output data and error handling
+
+`items.py`
+```python
+
+# Define here the models for your scraped items
+#
+# See documentation in:
+# https://docs.scrapy.org/en/latest/topics/items.html
+import scrapy
+
+class BookscraperItem(scrapy.Item):
+    # define the fields for your item here like:
+    name = scrapy.Field()
+    pass
+
+def serialize_price(value):
+    return f'£ {str(value)}'
+
+class BookItem(scrapy.Item):
+   url = scrapy.Field()
+   title = scrapy.Field()
+   upc = scrapy.Field()
+   product_type = scrapy.Field()
+   price_excl_tax = scrapy.Field()
+   price_incl_tax = scrapy.Field()
+   tax = scrapy.Field()
+   availability = scrapy.Field()
+   num_reviews = scrapy.Field()
+   stars = scrapy.Field()
+   category = scrapy.Field()
+   description = scrapy.Field()
+   price = scrapy.Field()
+
+```
+
+[Item Pipelines](https://docs.scrapy.org/en/latest/topics/item-pipeline.html) are the data processors of Scrapy, which all our scraped Items will pass through and from where we can clean, process, validate, and store our data.
+
+Using Scrapy Pipelines we can:
+
+- Clean our data (ex. remove currency signs from prices)
+- Format our data (ex. convert strings to ints)
+- Enrich our data (ex. convert relative links to absolute links)
+- Valdiate our data (ex. make sure the price scraped is a viable price)
+- Store our data in databases, queues, files or object storage buckets.
+
+In our Scrapy project, we will use Item Pipelines to clean and process our data before storing it in a database.
+
+`pipelines.py`
+```python
+
+# Define your item pipelines here
+#
+# Don't forget to add your pipeline to the ITEM_PIPELINES setting
+# See: https://docs.scrapy.org/en/latest/topics/item-pipeline.html
+
+# useful for handling different item types with a single interface
+from itemadapter import ItemAdapter
+
+class BookscraperPipeline:
+    def process_item(self, item, spider):
+
+        adapter = ItemAdapter(item)
+
+        ## Strip all whitespaces from strings
+        field_names = adapter.field_names()
+        for field_name in field_names:
+            if field_name != 'description':
+                value = adapter.get(field_name)
+                adapter[field_name] = value[0].strip()
+
+        ## Category & Product Type --> switch to lowercase
+        lowercase_keys = ['category', 'product_type']
+        for lowercase_key in lowercase_keys:
+            value = adapter.get(lowercase_key)
+            adapter[lowercase_key] = value.lower()
+
+        ## Price --> convert to float
+        price_keys = ['price', 'price_excl_tax', 'price_incl_tax', 'tax']
+        for price_key in price_keys:
+            value = adapter.get(price_key)
+            value = value.replace('£', '')
+            adapter[price_key] = float(value)
+
+        ## Availability --> extract number of books in stock
+        availability_string = adapter.get('availability')
+        split_string_array = availability_string.split('(')
+        if len(split_string_array) < 2:
+            adapter['availability'] = 0
+        else:
+            availability_array = split_string_array[1].split(' ')
+            adapter['availability'] = int(availability_array[0])
+
+        ## Reviews --> convert string to number
+        num_reviews_string = adapter.get('num_reviews')
+        adapter['num_reviews'] = int(num_reviews_string)
+
+        ## Stars --> convert text to number
+        stars_string = adapter.get('stars')
+        split_stars_array = stars_string.split(' ')
+        stars_text_value = split_stars_array[1].lower()
+        if stars_text_value == "zero":
+            adapter['stars'] = 0
+        elif stars_text_value == "one":
+            adapter['stars'] = 1
+        elif stars_text_value == "two":
+            adapter['stars'] = 2
+        elif stars_text_value == "three":
+            adapter['stars'] = 3
+        elif stars_text_value == "four":
+            adapter['stars'] = 4
+        elif stars_text_value == "five":
+            adapter['stars'] = 5
+
+        return item
+
+```
+
+---
+
+The `BookscraperPipeline` should correspond to the name of the class in the `pipelines.py` file
+NOTE: this line is automatically generated by scrapy and all you have to do is uncomment it.
+`settings.py`
+```python
+
+# Configure item pipelines
+# See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
+ITEM_PIPELINES = {
+   'bookscraper.pipelines.BookscraperPipeline': 300,
+}
+
+```
+
+---
+
+`bookspider.py`
+```python
+
+import scrapy
+from bookscraper.items import BookItem  
+
+class BookspiderSpider(scrapy.Spider):
+    name = 'bookspider'
+    allowed_domains = ['books.toscrape.com']
+    start_urls = ['https://books.toscrape.com/']
+
+    def parse(self, response):
+        books = response.css('article.product_pod')
+        for book in books:
+            relative_url = book.css('h3 a ::attr(href)').get()
+
+            if 'catalogue/' in relative_url:
+                book_url = 'https://books.toscrape.com/' + relative_url
+            else:
+                book_url = 'https://books.toscrape.com/catalogue/' + relative_url
+            yield response.follow(book_url, callback=self.parse_book_page)
+
+        next_page = response.css('li.next a ::attr(href)').get()
+        if next_page is not None:
+            if 'catalogue/' in next_page:
+                next_page_url = 'https://books.toscrape.com/' + next_page
+            else:
+                next_page_url = 'https://books.toscrape.com/catalogue/' + next_page
+            yield response.follow(next_page_url, callback=self.parse)
+
+
+    def parse_book_page(self, response):
+
+        table_rows = response.css("table tr")
+        book_item = BookItem()
+
+        book_item['url'] = response.url,
+        book_item['title'] = response.css('.product_main h1::text').get(),
+        book_item['upc'] = table_rows[0].css("td ::text").get()
+        book_item['product_type' ] = table_rows[1].css("td ::text").get(),
+        book_item['price_excl_tax'] = table_rows[2].css("td ::text").get(),
+        book_item['price_incl_tax'] = table_rows[3].css("td ::text").get(),
+        book_item['tax'] = table_rows[4].css("td ::text").get(),
+        book_item['availability'] = table_rows[5].css("td ::text").get(),
+        book_item['num_reviews']=  table_rows[6].css("td ::text").get(),
+        book_item['stars'] = response.css("p.star-rating").attrib['class'],
+        book_item['category'] = response.xpath("//ul[@class='breadcrumb']/li[@class='active']/preceding-sibling::li[1]/a/text()").get(),
+        book_item['description'] = response.xpath("//div[@id='product_description']/following-sibling::p/text()").get(),
+        book_item['price'] = response.css('p.price_color ::text').get(),
     
-    - `/html/body/div` → starts from the root (absolute).
-    - `//div` → searches anywhere in the document (relative, more flexible).
-        
-- **Basic Syntax**
-    
-    - `//tagname` → selects all elements with that tag.
-    - `//tagname[@attribute='value']` → selects elements with a specific attribute.
-    - `//tagname/text()` → extracts the text inside the element.
-    - `//tagname/@href` → extracts the value of the `href` attribute.
-## 🔗 Navigating Relationships
+        yield book_item
 
-XPath shines when you need to move between related elements:
+```
 
-- **Parent → Child**
-    - `//div[@class='product']/p` → finds `<p>` inside a `<div class="product">`.
 
-- **Sibling Navigation**
-    
-    - `preceding-sibling::li[1]` → selects the `<li>` immediately before the current one.
-    - `following-sibling::p` → selects the `<p>` immediately after the current node.
-        
-- **Ancestor/Descendant**
-    
-    - `ancestor::ul` → moves up to the parent `<ul>`.
-    - `descendant::span` → finds all `<span>` inside the current node.
+# Saving Data to files and Databases
 
-## 📊 Example from Your Spider
+One you can use the command line method `scrapy crawl bookspider -O bookdata.csv`
+Second you can use the settings method and add this like to save in a json or any format and just run it as usual `scrapy crawl bookspider`
 
-- **Category Extraction*
-    
-    ```xpath
-    //ul[@class='breadcrumb']/li[@class='active']/preceding-sibling::li[1]/a/text()
-    ```
-    
-    - Find the breadcrumb list (`ul[@class='breadcrumb']`).
-    - Locate the active item (`li[@class='active']`).
-    - Move one step back (`preceding-sibling::li[1]`).
-    - Get the text inside its `<a>` tag.
-        
-- **Description Extraction**
-    
-    ```xpath
-    //div[@id='product_description']/following-sibling::p/text()
-    ```
-    
-    - Find the div with id `product_description`.
-    - Move to the next `<p>` after it (`following-sibling::p`).
-    - Extract its text.
-        
-## ✅ Why Use XPath Instead of CSS
+`settings.py`
+```python
 
-- **CSS selectors** are simpler for direct matches (`.class`, `#id`, `tag[attr=value]`).    
-- **XPath** is more powerful when you need:
-    
-    - To move between siblings or parents.
-    - To extract based on position (`[1]`, `[last()]`).
-    - To combine conditions (`//div[@class='x' and @id='y']`).
-## 📝 Minimal Notes
+FEEDS = {
+    'booksdata.json': {'format': 'json'},
+}
 
-- XPath = “path language” for navigating HTML/XML.
-- Use `//` for relative search, `@` for attributes, `/` for hierarchy.
-- `preceding-sibling` and `following-sibling` let you move sideways in the DOM.
-- In your spider, XPath is used to grab **category** and **description** because they’re not easily accessible with CSS alone.
+```
+
+#### saving to database
+We will be using the pipeline and mysql database
+- Create a database using mysql
+- Install mysql connector `pip3 install mysql mysql-connector-python`
+- Now we can use the database using pipelines by adding the code below to the already existing code in pipelines
+
+`pipelines.py`
+```python
+
+import mysql.connector
+
+class SaveToMySQLPipeline:
+
+    def __init__(self):
+        self.conn = mysql.connector.connect(
+            host = 'localhost',
+            user = 'root',
+            password = '', #add your password here if you have one set 
+            database = 'books'
+        )
+
+        ## Create cursor, used to execute commands
+        self.cur = self.conn.cursor()
+
+        ## Create books table if none exists
+        self.cur.execute("""
+        CREATE TABLE IF NOT EXISTS books(
+            id int NOT NULL auto_increment, 
+            url VARCHAR(255),
+            title text,
+            upc VARCHAR(255),
+            product_type VARCHAR(255),
+            price_excl_tax DECIMAL,
+            price_incl_tax DECIMAL,
+            tax DECIMAL,
+            price DECIMAL,
+            availability INTEGER,
+            num_reviews INTEGER,
+            stars INTEGER,
+            category VARCHAR(255),
+            description text,
+            PRIMARY KEY (id)
+        )
+        """)
+
+    def process_item(self, item, spider):
+
+        ## Define insert statement
+        self.cur.execute(""" insert into books (
+            url, 
+            title, 
+            upc, 
+            product_type, 
+            price_excl_tax,
+            price_incl_tax,
+            tax,
+            price,
+            availability,
+            num_reviews,
+            stars,
+            category,
+            description
+            ) values (
+                %s,
+                %s,
+                %s,
+                %s,
+                %s,
+                %s,
+                %s,
+                %s,
+                %s,
+                %s,
+                %s,
+                %s,
+                %s
+                )""", (
+            item["url"],
+            item["title"],
+            item["upc"],
+            item["product_type"],
+            item["price_excl_tax"],
+            item["price_incl_tax"],
+            item["tax"],
+            item["price"],
+            item["availability"],
+            item["num_reviews"],
+            item["stars"],
+            item["category"],
+            str(item["description"][0])
+        ))
+
+        # ## Execute insert of data into database
+        self.conn.commit()
+        return item
+
+    
+    def close_spider(self, spider):
+
+        ## Close cursor & connection to database 
+        self.cur.close()
+        self.conn.close()
+
+```
+
+`settings.py`
+```python
+
+ITEM_PIPELINES = {
+   'bookscraper.pipelines.BookscraperPipeline': 300,
+   'bookscraper.pipelines.SaveToMySQLPipeline': 400,
+}
+
+```
+`> scrapy crawl bookspider`
+
