@@ -127,9 +127,9 @@ Code here
 ```
 ````
 
-|Column 1|Column 2|
-|---|---|
-|Data 1|Data 2|
+| Column 1 | Column 2 |
+| -------- | -------- |
+| Data 1   | Data 2   |
 
 ```
 
