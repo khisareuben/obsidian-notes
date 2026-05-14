@@ -7,7 +7,11 @@
 | 7. [[Custom Notes#Arithmetic operators]] | 8. [[Custom Notes#input]]             | 9. [[Custom Notes#Basic math functions]]     |
 | 10. [[Custom Notes#If statements]]       | 11. [[Custom Notes#switch statement]] | 12. [[Custom Notes#Operators]]               |
 | 13. [[Custom Notes#Important functions]] | 14. [[Custom Notes#Do while loop]]    | 15. [[Custom Notes#For loop]]                |
-| 16. [[Custom Notes#break and continue]]  | 17. [[Custom Notes#Random number]]    |                                              |
+| 16. [[Custom Notes#break and continue]]  | 17. [[Custom Notes#Random number]]    | 18. [[Custom Notes#Functions]]               |
+| 19. [[Custom Notes#Arrays]]              | 20. [[Custom Notes#sizeof()]]         | 21. [[Custom Notes#foreach loop]]            |
+| 22. [[Custom Notes#3D arrays]]           | 23. [[Custom Notes#memory address]]   | 24. [[Custom Notes#pointers]]                |
+| 25. [[Custom Notes#Dynamic memory]]      | 26. [[Custom Notes#Recursion]]        | 27. [[Custom Notes#function template]]       |
+| 28. [[Custom Notes#Struct]]              |                                       |                                              |
 
 
 
@@ -195,6 +199,9 @@ int main() {
     
     std::cout << "What is your name?: ";
     std::cin >> name;
+    
+    // std::cin.clear():
+    // fflush(stdin);       {these are for invalid values, it clears the buffer so it does'nt crush}
 
     std::cout << "Your name is " << name;
     return 0;
@@ -240,6 +247,8 @@ int main() {
     // z = round(x);
     // z = ceil(x);
     // z = floor(x);
+    
+    // j = toupper(j)
 
     std::cout << z;
     return 0;
@@ -444,3 +453,369 @@ int main() {
 ```
 
 
+### Functions
+
+It is valid for functions to share the same name as long as they have different parameters.
+
+```cpp
+#include <iostream>
+#include <random>
+// void is used if not returning anything otherwise you can specify the data type to return
+void myfunction(){
+    std::cout << "THis is a function";
+}
+
+int main() {
+
+    myfunction();
+    return 0;
+}
+
+```
+
+```cpp
+#include <iostream>
+#include <random>
+// this is the one thats mostly used 
+void myfunction();
+
+int main() {
+
+    myfunction();
+    return 0;
+}
+
+void myfunction(){
+    std::cout << "THis is my function";
+}
+```
+
+### Arrays
+
+```cpp
+#include <iostream>
+
+int main() {
+    std::string cars[] = {"BYD", "Toyota Raize", "Ford f150"};
+    double price[] = {50.22, 20.10, 59.45};
+
+    std::cout << cars[0] << '\n';
+    std::cout << cars[1] << '\n';
+    std::cout << cars[2] << '\n';
+
+    return 0;
+}
+```
+
+### sizeof()
+
+Determines the size in bytes of a: variable, data type, class, objects, etc.
+
+```cpp
+#include <iostream>
+
+int main() {
+    int age = 25;
+    std::string cars[] = {"BYD", "Toyota Raize", "Ford f150"};
+    
+    std::cout << sizeof(age) << " bytes";
+    std::cout << sizeof(cars)/sizeof(std::string); // calcs number of elements in array
+
+    return 0;
+}
+```
+
+```cpp
+#include <iostream>
+
+int main() {
+    std::string cars[] = {"BYD", "Toyota Raize", "Ford f150"};
+    
+    int size = sizeof(cars)/sizeof(std::string)
+    
+    for(int i = 0; i < size; i++) {
+        std::cout << cars[i] << "\n";
+    }
+
+    return 0;
+}
+```
+
+
+### foreach loop
+Is a loop that eases the traversal over an iterable data set
+
+```cpp
+#include <iostream>
+
+int main() {
+    std::string cars[] = {"BYD", "Toyota Raize", "Ford f150"};
+
+    for(std::string car : cars) {
+        std::cout << car << "\n";
+    }
+
+    return 0;
+}
+```
+
+```cpp
+#include <iostream>
+
+int main() {
+    const int SIZE = 100;
+    std::string foods[SIZE]{};
+
+	//fill() - fills a range of elements with a specified value. fill(begin, end, value)
+    fill(foods, foods + SIZE, "Jesus");
+
+    for(std::string food : foods) {
+        std::cout << food << "\n";
+    }
+
+
+    return 0;
+}
+```
+
+
+### 3D arrays
+
+```cpp
+#include <iostream>
+
+int main() {
+    std::string food[][3]{{"Mango", "Banana", "Tomoko"},
+                         {"Sukuma Wiki", "Cabbage", "Managu"},
+                         {"Rice", "Ugali", "Bread"}};
+    //[row][column]
+    std::cout << food[0][0] << '\n';
+    std::cout << food[1][0] << '\n';
+    std::cout << food[2][0] << '\n';
+
+    return 0;
+}
+```
+
+### memory address
+
+```cpp
+#include <iostream>
+
+int main() {
+    std::string name{"Reuben"};
+    int age{25};
+    double salary{100000.00};
+    
+    std::cout << &name << '\n';
+    std::cout << &age << '\n';
+    std::cout << &salary << '\n';
+
+    return 0;
+}
+```
+
+
+### pointers
+
+Is a variable that stores the memory address of another variable
+
+```cpp
+#include <iostream>
+
+int main() {
+    std::string name = "Reuben";
+    std::string food[]{"Mango", "Banana", "Tomoko"};
+
+    std::string *pName = &name;
+    std::string *pfood = food; //arrays are already in the form of a memory address
+
+    std::cout << pName << '\n'; //0x7ffe6b1ef460
+    std::cout << *pName << '\n'; //Reuben
+    std::cout << pfood << '\n';
+    std::cout << *pfood << '\n';
+
+    return 0;
+}
+```
+
+`null pointer` - an empty pointer
+```cpp
+#include <iostream>
+
+int main() {
+    int *pointer = nullptr;
+    int x = 123;
+    pointer = &x;
+
+    if(pointer == nullptr){
+        std::cout << "Address was not assigned";
+    }else{
+        std::cout << "Address was assigned";
+    }
+    return 0;
+}
+```
+
+### Dynamic memory
+This is memory that is allocated after the program is already compiled and running.
+Use the `new` to allocate memory in the heap rather than the stack
+It is useful when we don't know how much memory we will need e.g `inputs` 
+```cpp
+#include <iostream>
+
+int main() {
+    int *pNum = NULL;
+    pNum = new int;
+    *pNum = 21;
+
+    std::cout << pNum << "\n";
+    std::cout << *pNum << "\n";
+
+    delete pNum; //to prevent memory leak
+    
+    return 0;
+}
+```
+or
+```cpp
+#include <memory>
+#include <iostream>
+
+int main() {
+    auto pNum = std::make_unique<int>(21);
+    std::cout << *pNum << "\n"; // prints 21
+} // memory auto-freed when pNum goes out of scope
+
+```
+
+### Recursion
+A programming technique where a functions invokes itself from within. You could either use `recursion` or `iterative` like for loops.
+It is mostly used in algorithms e.g search algorithms
+```cpp
+#include <iostream>
+
+void walk(int steps);
+
+int main() {
+	walk(100);
+	return 0;
+}
+void walk(int steps){
+	if(steps > 0){
+		std::cout << "You take a step!\n";
+		walk(steps - 1);
+	}
+}
+```
+
+```cpp
+#include <iostream>
+int factorial(int num);
+int main (){
+	std::cout << factorial(10);
+	return 0;
+}
+int factorial(int num){
+	if(num > 1){
+		return num * factorial(num - 1);
+	} else{
+		return 1;
+	}
+}
+```
+
+### function template
+Describes what a function looks like. Can be used to generate as many overloaded functions as needed, each using different data types.
+Simply, it allows you to have different data types in one function.
+```cpp
+#include <iostream>
+template <typename T>
+T max(T x, T y) {
+	return (x > y) ? x : y;
+}
+int main() {
+	std::cout << max(1.1, 2.1) << '\n';
+	return 0;
+}
+```
+```cpp
+#include <iostream>
+template <typename T, typename Y>
+auto max(T x, Y y) {
+	return (x > y) ? x : y;
+}
+int main() {
+	std::cout << max(1.1, 2.1) << '\n';
+	return 0;
+}
+```
+
+### Struct
+A structure that group related variables under one name. 
+Structs can contain many different data types (string, bool, int, double, etc.)
+Variables in a struct are know as `members`
+members can be access with `.` "class member access operator"
+
+```cpp
+#include <iostream>
+
+struct student {
+    std::string name;
+    double gpa;
+    bool enrolled;
+};
+
+int main(){
+    student student1;
+    student1.name = "John Doe";
+    student1.gpa = 3.1;
+    student1.enrolled = false;
+
+    student student2;
+    student2.name = "Zhou Shen";
+    student2.gpa = 4.1;
+    student2.enrolled = true;
+
+    std::cout << student1.name << '\n';
+    std::cout << student1.gpa << '\n';
+    std::cout << student1.enrolled << '\n';
+}
+```
+
+```cpp
+#include <iostream>
+
+struct Car{
+    std::string model;
+    int year;
+    std::string color;
+};
+void printCar(Car car);
+
+int main(){
+    Car car1;
+    Car car2;
+
+    car1.model = "Toyota Raize";
+    car1.year = 2023;
+    car1.color = "red";
+
+    car2.model = "ford f-150";
+    car2.year = 2026;
+    car2.color = "blue";
+
+    printCar(car1);
+
+    return 0;
+}
+
+void printCar(Car car){
+    std::cout << car.model << '\n';
+    std::cout << car.year << '\n';
+    std::cout << car.color << '\n';
+}
+```
+
+
+[[Custom Notes#Basic output]]
