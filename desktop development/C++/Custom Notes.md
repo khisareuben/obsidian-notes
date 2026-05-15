@@ -1,17 +1,18 @@
 
 
 
-| 1. [[Custom Notes#Basic output]]         | 2. [[Custom Notes#Comments]]          | 3. [[Custom Notes#Data types and variables]] |
-| ---------------------------------------- | ------------------------------------- | -------------------------------------------- |
-| 4. [[Custom Notes#Namespace]]            | 5. [[Custom Notes#Typedef]]           | 6. [[Custom Notes#Using keyword]]            |
-| 7. [[Custom Notes#Arithmetic operators]] | 8. [[Custom Notes#input]]             | 9. [[Custom Notes#Basic math functions]]     |
-| 10. [[Custom Notes#If statements]]       | 11. [[Custom Notes#switch statement]] | 12. [[Custom Notes#Operators]]               |
-| 13. [[Custom Notes#Important functions]] | 14. [[Custom Notes#Do while loop]]    | 15. [[Custom Notes#For loop]]                |
-| 16. [[Custom Notes#break and continue]]  | 17. [[Custom Notes#Random number]]    | 18. [[Custom Notes#Functions]]               |
-| 19. [[Custom Notes#Arrays]]              | 20. [[Custom Notes#sizeof()]]         | 21. [[Custom Notes#foreach loop]]            |
-| 22. [[Custom Notes#3D arrays]]           | 23. [[Custom Notes#memory address]]   | 24. [[Custom Notes#pointers]]                |
-| 25. [[Custom Notes#Dynamic memory]]      | 26. [[Custom Notes#Recursion]]        | 27. [[Custom Notes#function template]]       |
-| 28. [[Custom Notes#Struct]]              |                                       |                                              |
+| 1. [[Custom Notes#Basic output]]         | 2. [[Custom Notes#Comments]]           | 3. [[Custom Notes#Data types and variables]]     |
+| ---------------------------------------- | -------------------------------------- | ------------------------------------------------ |
+| 4. [[Custom Notes#Namespace]]            | 5. [[Custom Notes#Typedef]]            | 6. [[Custom Notes#Using keyword]]                |
+| 7. [[Custom Notes#Arithmetic operators]] | 8. [[Custom Notes#input]]              | 9. [[Custom Notes#Basic math functions]]         |
+| 10. [[Custom Notes#If statements]]       | 11. [[Custom Notes#switch statement]]  | 12. [[Custom Notes#Operators]]                   |
+| 13. [[Custom Notes#Important functions]] | 14. [[Custom Notes#Do while loop]]     | 15. [[Custom Notes#For loop]]                    |
+| 16. [[Custom Notes#break and continue]]  | 17. [[Custom Notes#Random number]]     | 18. [[Custom Notes#Functions]]                   |
+| 19. [[Custom Notes#Arrays]]              | 20. [[Custom Notes#sizeof()]]          | 21. [[Custom Notes#foreach loop]]                |
+| 22. [[Custom Notes#3D arrays]]           | 23. [[Custom Notes#memory address]]    | 24. [[Custom Notes#pointers]]                    |
+| 25. [[Custom Notes#Dynamic memory]]      | 26. [[Custom Notes#Recursion]]         | 27. [[Custom Notes#function template]]           |
+| 28. [[Custom Notes#Struct]]              | 29. [[Custom Notes#enums]]             | 30. [[Custom Notes#object oriented programming]] |
+| 31. [[Custom Notes#constructor]]         | 32. [[Custom Notes#getter and setter]] | 33. [[Custom Notes#inheritence]]                 |
 
 
 
@@ -817,5 +818,177 @@ void printCar(Car car){
 }
 ```
 
+### enums
+A user-defined type that consists of paired named-integer constants.
+They are great if you have a set of potential options
+```cpp
+#include <iostream>
+
+enum Day {
+    sunday=0, monday=1, tuesday=2, wednesday=3, 
+    thursday=4, friday=5, saturday=6};
+
+int main(){
+    Day today = wednesday;
+
+    switch(today){
+        case 0: std::cout << "It is Sunday!\n";
+            break;
+        case 1: std::cout << "It is Monday!\n";
+            break;
+        case 2: std::cout << "It is Tuesday!\n";
+            break;
+        case wednesday: std::cout << "It is Wednesday!\n";
+            break;
+        case 4: std::cout << "It is Thursday!\n";
+            break;
+        case 5: std::cout << "It is Friday!\n";
+            break;
+        case saturday: std::cout << "It is Saturday!\n";
+            break;
+
+    }
+    return 0;
+}
+```
+
+### object oriented programming
+An object is a collection of attributes and methods
+```cpp
+#include <iostream>
+
+class Human{
+    public:
+	    //attibutes
+        std::string name;
+        std::string occupation;
+        int age;
+
+		//methods
+        void eat(){
+            std::cout << "This person is eating\n";
+        }
+        void drink(){
+            std::cout << "This person is drinking\n";
+        }
+        void sleep(){
+            std::cout << "This person is sleeping\n";
+        }
+        void Human::run()
+        
+};
+
+//recommended for writing huge classes/methods nowadays
+void Human::run(){
+	std::cout << "This person is running\n";
+}
+
+int main(){
+    Human human1;  //object
+
+    human1.name = "Rick";
+    human1.occupation = "Developer";
+    human1.age = 35;
+
+    std::cout << human1.name << '\n';
+    std::cout << human1.occupation << '\n';
+    std::cout << human1.age << '\n';
+
+    human1.eat();
+    human1.drink();
+    human1.sleep();
+
+    return 0;
+
+}
+```
+
+#### constructor
+A special method that is automatically called when a object is instantiated.
+useful for assigning values to attributes as arguments
+`preferred than the first one above`
+
+```cpp
+#include <iostream>
+
+class Student{
+    public:
+        std::string name;
+        int age;
+        double gpa;
+
+	//constructor
+    Student(std::string name, int age, double gpa){
+        this->name = name;
+        this->age = age;
+        this->gpa = gpa;
+    }
+};
+
+int main(){
+    Student student1("Spongebob", 25, 3.2);
+
+    std::cout << student1.name << '\n';
+    std::cout << student1.age << '\n';
+    std::cout << student1.gpa << '\n';
+}
+```
+
+### getter and setter
+
+`Abstrcution` - hiding unnecessary data from outside a class
+`getter` - function that makes a private attribute READABLE
+`setter` - function that makes a private attribute WRITABLE
+
+```cpp
+#include <iostream>
+
+class Stove{
+    private:
+        int temperature = 0;
+    public:
+        //getter(readonly)
+        // the temperature can be seen though its private
+        int getTmeperature(){
+            return temperature;
+        }
+        //setter(writable)
+        //the temperature can be writable though its private
+        void setTemperature(int temperature){
+            this->temperature = temperature;
+        }
+};
+
+int main(){
+    Stove stove;
+
+    stove.setTemperature(1000);
+    std::cout << "The temperature setting is: " << stove.getTmeperature(); 
+}
+```
+
+### inheritence
+A class that can recieve attributes and methods from another class
+```cpp
+#include <iostream>
+
+class Animal{
+    public:
+        bool alive = true;
+        
+        void eat(){
+            std::cout << "This animal is eating\n";
+        }
+};
+class Dog : public Animal {
+
+};
+
+int main(){
+     Dog dog;
+     std::cout << dog.alive << '\n';
+     dog.eat();
+}
+```
 
 [[Custom Notes#Basic output]]
