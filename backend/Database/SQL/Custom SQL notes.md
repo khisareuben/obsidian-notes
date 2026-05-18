@@ -21,6 +21,14 @@ We will be using `mysql workbench` to execute the sql commands
 | 7. [[Custom SQL notes#foreign key constraint]]       |                                                        |
 | Dealing with joints                                  |                                                        |
 | [[Joints]]                                           |                                                        |
+| 1. [[Custom SQL notes#functions]]                    | 2. [[Custom SQL notes#logical operators]]              |
+| 3. [[Custom SQL notes#wild car characters % , _]]    | 4. [[Custom SQL notes#order by]]                       |
+| 5. [[Custom SQL notes#Limit clause]]                 | 6. [[Custom SQL notes#Union]]                          |
+| 7. [[Self Join]]                                     | 8. [[Custom SQL notes#Views]]]                         |
+| 9. [[Custom SQL notes#Index]]                        | 10. [[Subquery]]                                       |
+| 11. [[Custom SQL notes#Group By clause]]             | 12. [[Custom SQL notes#Rollup]]                        |
+| 13. [[Custom SQL notes#On Delete clause]]            | 14. [[Stored procedures]]                              |
+| 15. [[Triggers]]                                     |                                                        |
 
 
 
@@ -84,6 +92,10 @@ MODIFY COLUMN email VARCHAR(20);  --it was (15) and now its (20)
 ALTER TABLE employees
 MODIFY COLUMN email VARCHAR(50)
 AFTER last_name
+
+--adding a column
+ALTER TABLE employees
+ADD COLUMN columnName VARCHAR(25) AFTER hourly_pay;
 ```
 
 ### drop a column
@@ -318,7 +330,190 @@ To learn More [[Joints]]
 
 ### functions
 
+```sql
+--to returns the numer of rows in that column
+SELECT COUNT(columnName)
+FROM tableName;
 
+--to return the maximum value
+SELECT MAX(columnName) AS maximum
+FROM tableName;
+
+--to return the minimum
+SELECT MIN(columnName)
+FROM tableName;
+
+AVG(columnName) -- for average
+SUM(columnName) --for addition
+
+--to concatenate values together
+SELECT CONCAT(first_name, " ", last_name) AS full_name
+FROM employees;
+```
+
+### logical operators
+
+```sql
+--AND
+SELECT * FROM employees
+WHERE hire_date < "2023-01-5" AND job = "cook";
+--OR
+SELECT * FROM employees
+WHERE job = "cook" OR job = "cashier";
+--NOT
+SELECT * FROM employees
+WHERE NOT job = "manager" AND NOT job = "asst. manager";
+--BETWEEN
+SELECT * FROM employees
+WHERE hire_date BETWEEN "2023-01-04" AND "2023-01-07";
+--IN
+SELECT * FROM employees
+WHERE job IN ("cook", "cashier", "janitor");
+```
+
+### wild car characters % , _
+Used to substitute one or more characters in a string
+`%` - substitute a string
+`_` - substitute a single character
+```sql
+--where first name starts with "s"
+SELECT * FROM employees
+WHERE first_name LIKE "s%"
+
+--wher job is "cook"
+SELECT * FROM employees
+WHERE job LIKE "_ook";
+
+SELECT * FROM employees
+WHERE hire_date LIKE "____-__-03";
+```
+
+### order by
+```sql
+SELECT * FROM employees
+ORDER BY last_name --DESC--;
+
+--if some have the same last name you can add another order by
+SELECT * FROM employees
+ORDER BY last_name, customer_id;
+```
+
+### Limit clause
+- Limit clause is used to limit the number of records.
+- useful if you're working with a lot of data.
+- can be used to display a large data on pages(pagination).
+```sql
+--returns a limited result
+SELECT * FROM employees
+LIMIT 5;
+
+--to return last data only base on last name
+SELECT * FROM customers
+ORDER BY last_name DESC LIMIT 1;
+
+SELECT * FROM customers
+LIMIT 10, 10; --offset
+```
+
+### Union 
+Combines the results of two or more `SELECT` statements
+They should have the same number of columns.
+```sql
+SELECT * FROM employees;
+UNION --this won't work if they have diff no. of columns
+SELECT * FROM customers;
+
+SELECT first_name, last_name FROM employees;
+UNION ALL --(ALL)to allow duplicates found in both columns
+SELECT first_name, last_name FROM customers;
+```
+
+### Views
+A virtual table based on the result-set of an SQL statement. The fields in a view are fields from one or more real tables in the database.
+They are not real tables, but can be interacted with as if they were and any changes to the real table will automatically reflect on the view
+```sql
+--to a view of first_name and last_name
+CREATE VIEW employee_attendance AS 
+SELECT first_name, last_name
+FROM employees;
+
+SELECT * FROM employee_attendance;
+
+--to drop the view
+DROP VIEW employee_attendance;
+
+```
+
+### Index
+Are used to find values within a specific column more quickly. MySQL normally searches sequentially through a column so the longer the column, the more expensive the operation is. However,
+UPDATE takes more time, SELECT takes less time
+```sql
+--to show the indexes available in a table
+SHOW INDEXES FROM customers;
+
+--to create an index
+CREATE INDEX last_name_idx
+ON customers(last_name);
+
+SELECT * FROM customers
+WHERE last_name = "Puff"; --this will be much faster now
+
+--to drop an index
+ALTER TABLE customers
+DROP INDEX last_name_idx;
+```
+
+
+### Group By clause
+It aggregates all rows by a specific column often used with aggregate functions ex. `SUM(), MAX(), MIN(), AVG(), COUNT()`
+```sql
+--find total amount of each day
+SELECT SUM(amount), order_date
+FROM transactions
+GROUP BY order_date
+
+--count the no. of transactions made each day
+SELECT COUNT(amount), order_date
+FROM transactions
+GROUP BY order_date
+
+--counts the amount of transactions each customer made
+SELECT COUNT(amount), customer_id)
+FROM transactions 
+GROUP BY customer_id
+HAVING COUNT(amount) > 1; --WHERE cannot be use with GROUP BY
+```
+
+### Rollup
+It is an extension of the GROUP BY clause. Produces another row and shows the grand total (super-aggregate value)
+```sql
+--it shows the grand total of the sum amount
+SELECT SUM(amount), order_date
+FROM transactions
+GROUP BY order_date WITH ROLLUP;
+```
+
+### On Delete clause
+`ON DELETE SET NULL` - When a FK is deleted, replace FK with Null
+`ON DELETE CASCADE`- When a FK is deleted, delete row
+
+```sql
+SET foreign_key_checks = 0; --to allow deletion of FK
+
+DELETE FROM customers
+WHERE customer_id = 4;
+
+ALTER TABLE transactions
+ADD CONSTRAINT fk_customer_id
+FOREIGN KEY(customer_id) REFERENCES customers(customer_id)
+ON DELETE SET NULL;
+
+ALTER TABLE transactions
+ADD CONSTRAINT fk_transactions_id
+FOREIGN KEY(customer_id) REFERENCES customers(customer_id)
+ON DELETE CASCADE;
+
+```
 
 
 [[Custom SQL notes#Creating a database]]
