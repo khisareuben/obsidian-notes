@@ -740,6 +740,7 @@ int main() {
 	return 0;
 }
 ```
+
 ```cpp
 #include <iostream>
 template <typename T, typename Y>

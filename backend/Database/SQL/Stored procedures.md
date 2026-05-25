@@ -8,7 +8,6 @@ A **stored procedure** is a set of SQL statements saved in the database that you
 ## 🔹 Syntax
 
 
-
 ```sql
 DELIMITER //
 

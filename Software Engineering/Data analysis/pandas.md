@@ -11,6 +11,8 @@ name = pd.read_csv("path of csv")
 ```python
 type(name) # to check the type of file 
 
+name # to check the data in the file
+
 name.info() # to get the info in the csv file
 
 name.describe() # to get the statistical data like mean, std, min and max
@@ -60,7 +62,7 @@ from IPython.display import display with pd.option_context('display.max_rows', 1
 
 #### complex operations
 ```python
-# addng a new column in the file
+# addng a new column in the file using the results of other file operations
 name['name_of_new_column'] = another / another
 
 # how to remove a column
@@ -75,6 +77,52 @@ name.to_csv('file_name', index=None) # the index is to remove the index section 
 
 name.merge(...) # to merge two columns or rows
 
+#setting a column as an index
+result_df.set_index('columnName', inplace=True)
+
+
+```
+
+#### Working with dates
+```python
+#to convert a data type object to date
+covid_df.date #lets say this column contains the dates but the datatype is not a date
+
+#this creates a new column where we will put the converted date data
+covid_df['date'] = pd.to_datetime(covid_df.date)
+
+#now we can seperate them into year, month, day, weekday etc
+covid_df['year'] = pd.DatetimeIndex(covid_df.date).year
+covid_df['month'] = pd.DatetimeIndex(covid_df.date).month
+covid_df['day'] = pd.DatetimeIndex(covid_df.date).day
+covid_df['weekday'] = pd.DatetimeIndex(covid_df.date).weekday
+#monday is zero and sunday is 6
+```
+
+#### Grouping and aggregation
+```python
+covid_df.groupby('month') 
+
+monthly_groups = covid_df.groupby('month')
+monthly_groups[('column1', 'column2', 'column3')].sum()
+
+#for total sum of the data upto the current date for each row
+covid_df['total_cases'] = covid_df.new_cases.cumsum()
+```
+
+#### Merging data from multiple sources
+```python
+#we will take 2 data set location_df and covid_df
+locations_df = pd.read_csv('path/location.csv')
+locations_df
+loacations_df[locations_df.location == "Italy"]
+
+covid_df['location'] = "Italy"
+covid_df
+
+# merging the location column on both sides
+merged_df = covid_df.merge(locations_df, on="location")
+merged_df
 
 ```
 
@@ -89,5 +137,9 @@ name.column_name.plot(kind='bar') # to specify the kind of graph you want to plo
 
 # setting the date column as the index column
 name.set_index('column_name', inplace=True)
+
+#combine two columns to plot
+name.column1.plot()
+name.column2.plot();
 
 ```

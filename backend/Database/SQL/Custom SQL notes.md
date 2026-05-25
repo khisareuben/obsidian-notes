@@ -88,7 +88,7 @@ RENAME COLUMN currentColumnName TO newColumnName;
 ALTER TABLE employees
 MODIFY COLUMN email VARCHAR(20);  --it was (15) and now its (20)
 
---modify the limit and postion to come just after last_name
+--modify the limit and position to come just after last_name
 ALTER TABLE employees
 MODIFY COLUMN email VARCHAR(50)
 AFTER last_name
@@ -115,18 +115,18 @@ DROP TABLE tableName;
 ```sql
 	--base on the employess table created above
 INSERT INTO employees
-VALUE (1, "john", "Doe", 25.50, "2026-05-06");
+VALUES (1, "john", "Doe", 25.50, "2026-05-06");
 
 	--inserting many values at the same time
 INSERT INTO employees
-VALUE 	(1, "john", "Doe", 25.50, "2026-05-06"), 
+VALUES 	(1, "john", "Doe", 25.50, "2026-05-06"), 
 		(2, "mercy", "kang", 35.50, "2026-05-06"), 
 		(3, "Angel", "gong", 35.50, "2026-05-06"), 
 		(4, "James", "Walt", 35.50, "2026-05-06");
 
 --for specific fields
 INSERT INTO employees (employee_id, first_name, last_name)
-VALUE 	(5, "Jambo", "Karibu");
+VALUES 	(5, "Jambo", "Karibu");
 ```
 
 
