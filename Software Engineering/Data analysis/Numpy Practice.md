@@ -7,9 +7,9 @@ We’ll use the **MNIST dataset** (handwritten digits, 70,000 samples, each imag
 
 **Question entails:** Learn how to create different types of arrays (zeros, ones, identity, random).
 
-python
 
-```
+
+```python
 import numpy as np
 
 zeros = np.zeros((3,3))        # 3x3 matrix of zeros
@@ -24,9 +24,8 @@ rand_ints = np.random.randint(0, 10, (3,3))  # random integers 0–9
 
 **Question entails:** Extract subsets of data, reverse arrays, and select every nth element.
 
-python
 
-```
+```python
 subset = mnist_data[:10, :5]   # first 10 rows, first 5 columns
 reverse_rows = mnist_data[::-1]  # reverse rows
 every_2nd = mnist_data[:, ::2]  # every 2nd column
@@ -38,9 +37,8 @@ every_2nd = mnist_data[:, ::2]  # every 2nd column
 
 **Question entails:** Convert between flat arrays and 2D images.
 
-python
 
-```
+```python
 img = mnist_data[0]            # one image (784,)
 reshaped = img.reshape(28,28)  # back to 28x28
 ```
@@ -51,9 +49,8 @@ reshaped = img.reshape(28,28)  # back to 28x28
 
 **Question entails:** Apply operations across arrays of different shapes.
 
-python
 
-```
+```python
 matrix = np.ones((3,3))
 vector = np.array([1,2,3])
 result = matrix + vector   # vector added to each row
@@ -65,9 +62,8 @@ result = matrix + vector   # vector added to each row
 
 **Question entails:** Perform math directly on arrays.
 
-python
 
-```
+```python
 normalized = mnist_data / 255.0   # scale pixels to [0,1]
 variance = np.var(normalized)
 std_dev = np.std(normalized)
@@ -79,9 +75,8 @@ std_dev = np.std(normalized)
 
 **Question entails:** Select elements based on conditions.
 
-python
 
-```
+```python
 mask = mnist_data > 128
 bright_pixels = mnist_data[mask]
 ```
@@ -92,9 +87,8 @@ bright_pixels = mnist_data[mask]
 
 **Question entails:** Sort arrays and get sorted indices.
 
-python
 
-```
+```python
 arr = np.array([5,2,9,1])
 sorted_arr = np.sort(arr)
 indices = np.argsort(arr)
@@ -106,9 +100,8 @@ indices = np.argsort(arr)
 
 **Question entails:** Matrix multiplication and eigen decomposition.
 
-python
 
-```
+```python
 A = np.random.rand(3,3)
 B = np.random.rand(3,3)
 dot = np.dot(A,B)
@@ -121,9 +114,8 @@ eigenvalues, eigenvectors = np.linalg.eig(A)
 
 **Question entails:** Select random samples from dataset.
 
-python
 
-```
+```python
 sample = np.random.choice(mnist_data.shape[0], 100, replace=False)
 subset = mnist_data[sample]
 ```
@@ -134,9 +126,8 @@ subset = mnist_data[sample]
 
 **Question entails:** Compute mean, median, mode.
 
-python
 
-```
+```python
 mean_val = np.mean(mnist_data)
 median_val = np.median(mnist_data)
 unique, counts = np.unique(mnist_data, return_counts=True)
@@ -149,9 +140,8 @@ mode_val = unique[np.argmax(counts)]
 
 **Question entails:** Combine arrays horizontally or vertically.
 
-python
 
-```
+```python
 a = np.array([1,2,3])
 b = np.array([4,5,6])
 h_stack = np.hstack((a,b))
@@ -164,9 +154,8 @@ v_stack = np.vstack((a,b))
 
 **Question entails:** Find distinct values in dataset.
 
-python
 
-```
+```python
 unique_vals = np.unique(mnist_data)
 ```
 
@@ -176,9 +165,8 @@ unique_vals = np.unique(mnist_data)
 
 **Question entails:** Select specific rows/columns using lists.
 
-python
 
-```
+```python
 indices = [0,2,4,6]
 selected = mnist_data[indices]
 ```
@@ -189,9 +177,8 @@ selected = mnist_data[indices]
 
 **Question entails:** Modify array values based on condition.
 
-python
 
-```
+```python
 mnist_copy = mnist_data.copy()
 mnist_copy[mnist_copy < 50] = 0
 ```
@@ -202,9 +189,8 @@ mnist_copy[mnist_copy < 50] = 0
 
 **Question entails:** Replace loops with fast array operations.
 
-python
 
-```
+```python
 squared = mnist_data ** 2
 ```
 
@@ -214,9 +200,8 @@ squared = mnist_data ** 2
 
 **Question entails:** Compare Python loops vs NumPy.
 
-python
 
-```
+```python
 import time
 arr = np.random.rand(1000000)
 
@@ -235,9 +220,8 @@ print("NumPy:", time.time()-start)
 
 **Question entails:** Transform signals to frequency domain.
 
-python
 
-```
+```python
 signal = np.sin(np.linspace(0, 2*np.pi, 100))
 fft_result = np.fft.fft(signal)
 ```
@@ -248,9 +232,8 @@ fft_result = np.fft.fft(signal)
 
 **Question entails:** Fit polynomial to data.
 
-python
 
-```
+```python
 x = np.linspace(-3,3,100)
 y = x**2 + 2*x + 1
 coeffs = np.polyfit(x,y,2)
@@ -262,9 +245,8 @@ coeffs = np.polyfit(x,y,2)
 
 **Question entails:** Generate coordinate grids.
 
-python
 
-```
+```python
 x = np.linspace(-5,5,10)
 y = np.linspace(-5,5,10)
 X,Y = np.meshgrid(x,y)
@@ -277,9 +259,8 @@ Z = X**2 + Y**2
 
 **Question entails:** Monte Carlo simulation.
 
-python
 
-```
+```python
 N = 100000
 x = np.random.rand(N)
 y = np.random.rand(N)

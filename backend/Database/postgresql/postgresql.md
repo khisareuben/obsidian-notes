@@ -1,9 +1,9 @@
 
 ## 🔹 Step 1: Install PostgreSQL
 
-bash
 
-```
+
+```bash
 sudo apt update
 sudo apt install postgresql postgresql-contrib
 ```

@@ -20,9 +20,8 @@ We’ll assume you have a dataset like `gdp.csv` with columns:
 
 **Entails:** Reading CSV files and inspecting structure.
 
-python
 
-```
+```python
 import pandas as pd
 
 df = pd.read_csv("gdp.csv")
@@ -37,9 +36,8 @@ print(df.describe())  # summary stats
 
 **Entails:** Accessing specific columns.
 
-python
 
-```
+```python
 gdp_only = df['GDP']
 ```
 
@@ -49,9 +47,8 @@ gdp_only = df['GDP']
 
 **Entails:** Select rows based on conditions.
 
-python
 
-```
+```python
 trillion_plus = df[df['GDP'] > 1e12]
 ```
 
@@ -61,9 +58,8 @@ trillion_plus = df[df['GDP'] > 1e12]
 
 **Entails:** Setting a meaningful index.
 
-python
 
-```
+```python
 df_indexed = df.set_index('Country')
 ```
 
@@ -73,9 +69,8 @@ df_indexed = df.set_index('Country')
 
 **Entails:** Ordering data.
 
-python
 
-```
+```python
 sorted_df = df.sort_values('GDP', ascending=False)
 ```
 
@@ -85,9 +80,8 @@ sorted_df = df.sort_values('GDP', ascending=False)
 
 **Entails:** Aggregating by categories.
 
-python
 
-```
+```python
 avg_gdp_continent = df.groupby('Continent')['GDP'].mean()
 ```
 
@@ -97,9 +91,8 @@ avg_gdp_continent = df.groupby('Continent')['GDP'].mean()
 
 **Entails:** Multiple summary stats at once.
 
-python
 
-```
+```python
 agg_stats = df['GDP'].agg(['min','max','mean'])
 ```
 
@@ -109,9 +102,8 @@ agg_stats = df['GDP'].agg(['min','max','mean'])
 
 **Entails:** Combine datasets.
 
-python
 
-```
+```python
 population_df = pd.read_csv("population.csv")
 merged = pd.merge(df, population_df, on='Country')
 ```
@@ -122,9 +114,8 @@ merged = pd.merge(df, population_df, on='Country')
 
 **Entails:** Create derived metrics.
 
-python
 
-```
+```python
 merged['GDP_per_capita'] = merged['GDP'] / merged['Population']
 ```
 
@@ -134,9 +125,8 @@ merged['GDP_per_capita'] = merged['GDP'] / merged['Population']
 
 **Entails:** Handle NaN values.
 
-python
 
-```
+```python
 df['GDP'] = df['GDP'].fillna(df['GDP'].median())
 ```
 
@@ -146,9 +136,8 @@ df['GDP'] = df['GDP'].fillna(df['GDP'].median())
 
 **Entails:** Reshape data for analysis.
 
-python
 
-```
+```python
 pivot = df.pivot_table(values='GDP', index='Continent', columns='Year', aggfunc='mean')
 ```
 
@@ -158,9 +147,8 @@ pivot = df.pivot_table(values='GDP', index='Continent', columns='Year', aggfunc=
 
 **Entails:** Hierarchical indexing.
 
-python
 
-```
+```python
 multi = df.set_index(['Continent','Country'])
 ```
 
@@ -170,9 +158,8 @@ multi = df.set_index(['Continent','Country'])
 
 **Entails:** Apply custom transformations.
 
-python
 
-```
+```python
 df['log_GDP'] = df['GDP'].apply(lambda x: np.log(x))
 ```
 
@@ -182,9 +169,8 @@ df['log_GDP'] = df['GDP'].apply(lambda x: np.log(x))
 
 **Entails:** Manipulate text columns.
 
-python
 
-```
+```python
 df['Country_Code'] = df['Country'].str[:3].str.upper()
 ```
 
@@ -194,9 +180,8 @@ df['Country_Code'] = df['Country'].str[:3].str.upper()
 
 **Entails:** Work with dates.
 
-python
 
-```
+```python
 df['Year'] = pd.to_datetime(df['Year'], format='%Y')
 ```
 
@@ -206,9 +191,8 @@ df['Year'] = pd.to_datetime(df['Year'], format='%Y')
 
 **Entails:** Change frequency of time-series.
 
-python
 
-```
+```python
 df_time = df.set_index('Year')
 annual = df_time.resample('A').mean()
 ```
@@ -219,9 +203,8 @@ annual = df_time.resample('A').mean()
 
 **Entails:** Rolling statistics.
 
-python
 
-```
+```python
 df['GDP_rolling'] = df['GDP'].rolling(window=3).mean()
 ```
 
@@ -231,9 +214,8 @@ df['GDP_rolling'] = df['GDP'].rolling(window=3).mean()
 
 **Entails:** Optimize categorical data.
 
-python
 
-```
+```python
 df['Continent'] = df['Continent'].astype('category')
 ```
 
@@ -243,9 +225,8 @@ df['Continent'] = df['Continent'].astype('category')
 
 **Entails:** Save results.
 
-python
 
-```
+```python
 df.to_csv("cleaned_gdp.csv", index=False)
 ```
 
@@ -255,9 +236,8 @@ df.to_csv("cleaned_gdp.csv", index=False)
 
 **Entails:** Quick plots with Pandas.
 
-python
 
-```
+```python
 df.groupby('Year')['GDP'].sum().plot(kind='line')
 ```
 

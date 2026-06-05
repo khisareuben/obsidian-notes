@@ -60,6 +60,12 @@ results = np.concatenate((data, yields)) #without reshape
 results = np.concatenate((data, yields.reshape(3, 3)), axis=1) #to add as a column
 results = np.concatenate((data, yields),1) #without reshape
 
+#Combine arrays horizontally or vertically. same as concatenate
+a = np.array([1,2,3])
+b = np.array([4,5,6])
+h_stack = np.hstack((a,b))
+v_stack = np.vstack((a,b))
+
 np.savetxt(...) # this save the file 
 np.savetxt('results.txt/csv', results,
 fmt='%.2f', header='column,names', comments='')
@@ -93,6 +99,8 @@ np.zeros((3, 2))# this creates an array of zeros for 3 raws and 2 colums
 np.ones((3, 2)) # this creates an array of ones ...
 
 np.eye(3) #identity matrix whatever that means
+
+rand_ints = np.random.randint(0, 10, (3,3))  # random integers 0–9
 
 np.random.rand(5) #5 columns
 np.random.randn(2, 3) #2 rows 3 columns randn also include -ve

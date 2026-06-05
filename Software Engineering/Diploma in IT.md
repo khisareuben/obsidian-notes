@@ -12,6 +12,18 @@
 | **Certified ICT**                    | Broad ICT skills, often exam-based            | ICT officer, IT support                    | ⚖️ Good for government/NGO jobs, less dev-focused                              |
 | **Cyber Security**                   | Protecting systems, ethical hacking           | Security analyst, penetration tester       | ⚖️ Growing field, but not directly tied to app dev unless you specialize later |
 
+### Best Starting Jobs for Diploma in ICT Holders in Kenya (2026)
+
+Here’s a realistic progression path:
+
+|Rank|Job Title|Starting Salary (KSh)|Difficulty to Get|Why It's Good for Starters|Where to Apply|
+|---|---|---|---|---|---|
+|1|**IT Support / Helpdesk Technician**|35,000 – 60,000|Easy|Most common entry point|Companies, NGOs, Schools, Hospitals|
+|2|**ICT Technician / Officer**|40,000 – 65,000|Medium|Very common in counties & government|County Governments, Public Service|
+|3|**Network Support / Assistant**|45,000 – 70,000|Medium|High demand (especially fibre & ISP)|ISPs (Safaricom, Airtel, etc.)|
+|4|**Junior Web Developer**|40,000 – 75,000|Medium-Hard|Good if you know HTML, CSS, JavaScript, PHP/WordPress|Web agencies, Startups|
+|5|**Data Entry / Systems Clerk**|30,000 – 50,000|Easiest|Quick way to gain experience|Any company with digital systems|
+|6|**ICT Intern**|15,000 – 30,000|Easy|Great for building experience & CV|Hospitals, Colleges, Companies|
 
 
 # Degree in IT
@@ -46,3 +58,4 @@
 27. Bachelor of Science in statistics and information technology
 28. Bachelor of Science in Statistics and Computer Science
 29. Bachelor of Science in applied statistics and Data Science
+
