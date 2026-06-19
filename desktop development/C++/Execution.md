@@ -28,9 +28,9 @@ The `./` means "look in the current folder for a program called hello."
 
 Create a simple C++ file first:
 
-bash
 
-```
+
+```bash
 echo '#include <iostream>
 int main() {
     std::cout << "Hello from C++" << std::endl;
@@ -40,9 +40,9 @@ int main() {
 
 Then compile and run:
 
-bash
 
-```
+
+```bash
 g++ hello.cpp -o hello
 ./hello
 ```

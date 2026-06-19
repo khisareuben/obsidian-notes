@@ -83,6 +83,12 @@ ALTER TABLE employees
 RENAME COLUMN currentColumnName TO newColumnName;
 ```
 
+```sql
+--adding a column
+ALTER TABLE tableName
+ADD COLUMN columnName dataType;
+```
+
 ### modifying a column
 ```sql
 ALTER TABLE employees

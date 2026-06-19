@@ -62,12 +62,12 @@ LEFT JOIN orders ON customers.id = orders.customer_id;
 
 **Result**
 
-|name|product|
-|---|---|
-|Alice|Laptop|
-|Bob|Phone|
-|Bob|Tablet|
-|Carol|NULL|
+| name  | product |
+| ----- | ------- |
+| Alice | Laptop  |
+| Bob   | Phone   |
+| Bob   | Tablet  |
+| Carol | NULL    |
 
 ✅ Carol appears even though she has no order.
 

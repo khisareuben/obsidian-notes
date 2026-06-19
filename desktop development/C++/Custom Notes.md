@@ -436,15 +436,13 @@ int main() {
 #include <iostream>
 #include <random>
 
-using namespace std;
-
-int main() {
-    random_device rd;  // seed
-    mt19937 gen(rd()); // Mersenne Twister engine
-    uniform_int_distribution<> dist(1, 100); // range 1–100
+int main(){
+    std::random_device rd; //seed
+    std::mt19937 gen(rd()); //Mersenne Twister engine
+    std::uniform_int_distribution <> dist(1, 100); //range 1-100
 
     int randomNum = dist(gen);
-    cout << "Random number: " << randomNum << endl;
+    std::cout << "Random number: " << randomNum << std::endl;
 }
 
 // modern way (c++ 11) recommended

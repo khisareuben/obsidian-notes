@@ -156,17 +156,17 @@ print(credit_number[::3]) #chooses from first to last jumping 3 steps each
 ```
 
 #### format specifiers 
-{value:flags} format a value based on what flags are inserted
-.(number)f = round to that many decimal places(fixed point)
-:(number) = allocate that many spaces
-:03 = allocate and zero pad that many spaces
-:< = left justify
-:>= right justify
-:^ = center align
-:+ = use a plus sign to indicate positive value
-:= = place sign to left most position
-: = insert a space before positive numbers
-:, = comma separator
+`{value:flags}` format a value based on what flags are inserted
+`.(number)f` = round to that many decimal places(fixed point)
+`:(number)` = allocate that many spaces
+`:03` = allocate and zero pad that many spaces
+`:< =` left justify
+`:>=` right justify
+`:^ =` center align
+`:+ =` use a plus sign to indicate positive value
+`:= =` place sign to left most position
+`: =` insert a space before positive numbers
+`:, =` comma separator
 
 ```python
 price = 3.14159
@@ -212,7 +212,7 @@ a loop within another loop(outer, inner)
 ```python
 for x in range(3):
 	for y in range(1,10):
-		print(y, end="")
+		print(y, end=" ")
 	print()
 ```
 
@@ -266,12 +266,12 @@ capitals = {
 }
 
 print(capitals.get("USA"))
-capitals.update({"Germany": "Berlin"}) #updat the dictionary
+capitals.update({"Germany": "Berlin"}) #update the dictionary
 capitals.pop("China") #remove china
 capitals.clear() #it will clear the dictionary
 keys = capitals.keys() #it will return all the keys in the dictionary
 values = capitals.values() #returns all the values
-items = capitals.items #returns both the keys and values
+items = capitals.items() #returns both the keys and values
 
 for key, value in capitals.items():
 	print(f"{key}: {value}")
@@ -291,7 +291,7 @@ option = random.choice(options)
 print(option)
 
 #random shuffle
-cards = ["2", "3", "4", "5", "6", "7", "8", "9"]
+cards = [2, 3, 4, 5, 6, 7, 8, 9]
 random.shuffle(cards)
 print(cards)
 ```

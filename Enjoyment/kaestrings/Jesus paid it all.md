@@ -1,0 +1,45 @@
+
+**"Jesus Paid It All"**  
+  
+
+I hear the Savior say  
+"Thy strength indeed is small  
+Child of weakness, watch and pray  
+Find in Me thine all-in-all."  
+  
+Lord, now indeed I find  
+Thy pow'r and Thine alone  
+Can change the leper's spots  
+And melt the heart of stone  
+  
+Jesus paid it all  
+All to Him I owe  
+Sin had left a crimson stain  
+He washed it white as snow  
+  
+For nothing good have I  
+Whereby Thy grace to claim  
+I'll wash my garments white  
+In the blood of Calv'ry's Lamb  
+  
+Jesus paid it all  
+All to Him I owe  
+Sin had left a crimson stain  
+He washed it white as snow  
+  
+Jesus paid it all  
+All to Him I owe  
+Sin had left a crimson stain  
+He washed it white as snow  
+  
+And when, before the throne  
+Before the throne  
+I stand in Him complete  
+I stand in Him complete  
+"Jesus died my soul to save"  
+Thank You, Jesus  
+My lips shall still repeat  
+Hey  
+  
+Jesus paid it all  
+All to Him I owe

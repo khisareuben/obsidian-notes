@@ -38,6 +38,10 @@ sudo -u postgres psql
 
 You’ll enter the interactive SQL shell (`psql`). Exit with:
 
+if you want to put a password separate from linux system password
+```sql
+ALTER USER postgres WITH PASSWORD 'yourpassword';
+```
 
 
 ```sql
