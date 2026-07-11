@@ -68,6 +68,34 @@ name['name_of_new_column'] = another / another
 # how to remove a column
 name.drop(columns=['column_name'], inplace=True)
 
+# renaming
+name.rename(columns={"oldName": "newName"}, inplace=True)
+
+#checking duplicates
+data.duplicated()
+data.duplicated().sum()
+data.duplicated().value_counts()
+data.duplicated(subset=["col1", "col2"], keep="first")
+#`subset` → list of column names to check for duplicates.
+#`keep` → decides which duplicate is marked as unique (`'first'`, `'last'`, or `False`).
+
+data.drop_duplicates(inplace = True) #to remove duplicates
+
+# to check NaN values
+data.isna().sum()
+data.dropna(inplace=True) #drops NaN in all columns
+Data.dropna(subset=["ColumnName"], inplace=True) #drops NaN for a specific column
+# isna() only recognizes these `None`, `NaN`, or `NaT`
+
+#reassigning the index values
+data.reset_index(inplace=True)
+
+#returning the number of unique elements exluding NaN values
+data["ColumnName"].nunique()
+
+#changing data types of a column
+data["columnName"] = data["columnName"].astype(int)
+
 # sorting
 name.sort_values('column_name', ascending=False,).head(10)
 #the .head() allows you to choose the number of rows you want to get
@@ -81,6 +109,22 @@ name.merge(...) # to merge two columns or rows
 result_df.set_index('columnName', inplace=True)
 
 
+```
+
+```python
+# to replace something in a string
+df['price'] = df['price'].str.replace('$', '') \
+                         .str.replace(',', '') \
+                         .str.replace(' ', '')
+                         
+
+data["Name"] = data["Name"].str.replace(r'[^\x00-\x7F]+', '', regex=True)
+
+# changing the data type                         
+df['price'] = df['price'].astype(int)
+type(df['price'][2])
+
+# np.nan 
 ```
 
 #### Working with dates

@@ -24,8 +24,8 @@ o
 | 4. [[Custom postgresql notes#Order/sorting]]                  | 5. [[Custom postgresql notes#offset and limit]]               |
 | 6. [[Custom postgresql notes#Union clause]]                   | 7. [[Custom postgresql notes#Subqueries]]                     |
 | 8. [[Custom postgresql notes#Distinct]]                       | 9. [[Custom postgresql notes#Greatest and least function]]    |
-| 10. [[Custom postgresql notes#case clause]]                   |                                                               |
-|                                                               |                                                               |
+| 10. [[Custom postgresql notes#case clause]]                   | 11. [[Custom postgresql notes#CAST / Type Conversion]]        |
+| 12. [[Custom postgresql notes#COALESCE]]                      |                                                               |
 
 #### Creating a database
 ```sql
@@ -174,6 +174,14 @@ SELECT CONCAT(name, ', ', country) AS location FROM cities;
 
 
 --result Tokyo, Japan... under location column
+```
+
+```sql
+SELECT
+  first_name,
+  salary * 12                    AS annual_salary,
+  first_name || ' ' || last_name AS full_name
+FROM employees;
 ```
 
 #### upper & lower case
@@ -748,6 +756,32 @@ CASE
 	ELSE 'cheap'
 END
 FROM products;
+```
+
+#### CAST / Type Conversion
+
+CAST converts data from one type to another. Essential when you need to change data types for calculations, comparisons, or formatting.
+
+```sql
+SELECT
+  CAST('123' AS INTEGER) AS string_to_int,
+  CAST(salary AS TEXT) AS salary_text,
+  '2024-01-15'::DATE AS string_to_date
+FROM
+  employees;
+```
+
+#### COALESCE
+
+COALESCE returns the first non-NULL value from a list. Perfect for providing default values, handling missing data, and data cleaning.
+
+```sql
+SELECT
+  first_name,
+  COALESCE(manager_id, 0) AS manager_id_or_zero,
+  COALESCE(phone, email, 'No contact') AS contact_info
+FROM
+  employees;
 ```
 
 128 - 129 **Data types**

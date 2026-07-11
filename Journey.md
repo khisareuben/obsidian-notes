@@ -6,22 +6,21 @@
 
 
 
-| Data Engineering - 2hrs               |
+| Data Analysis - 2hrs                  |
 | ------------------------------------- |
-| Networking(CCNA) - 2hrs               |
 | Programming languages practice - 2hrs |
-| Desktop app development - 2hrs        |
+| Networking(CCNA) - 2hrs               |
  
 Wake up - 3am 
 Sleep - 10pm - 10:30pm
 
 
-| Networking(CCNA)        | 4:30 - 6:30                     |
-| ----------------------- | ------------------------------- |
-| Data Engineering        | 6:50 - 8:50                     |
-| Desktop app development | 9:10 - 11:10                    |
-| Programming practice    | 11:30 - 12:00 and late evenings |
-|                         |                                 |
+| Networking(CCNA)     | 4:30 - 6:30                     |
+| -------------------- | ------------------------------- |
+| Data Engineering     | 6:50 - 8:50                     |
+| Programming practice | 11:30 - 12:00 and late evenings |
+|                      |                                 |
+|                      |                                 |
 
 
 ## 📌 Quick Comparison
@@ -36,3 +35,5 @@ Sleep - 10pm - 10:30pm
 ||**SQLZoo**|Interactive tutorials|Free|
 ||**HackerRank**|Query challenges|Free|
 ||**Mode Analytics**|Guided SQL analysis|Free|
+
+write and explain the features of word processor

@@ -26,3 +26,11 @@ Window {
 }
 
 ```
+
+```c++
+Image{
+	anchors.fill: parent
+	source: "qrc:/new/prefix1/source/duck_doctor.jpg"
+	fillMode: Image.PreserveAspectFit // Image.PreserveAspectCrop, Image.Stretch
+}
+```

@@ -127,7 +127,7 @@ if temp > 35 or temp < 0 or is_raining:
 elif temp >= 28 and is_raining is False:
 	print("It's hot outside")
 else:
-	print("The outdoor even is still scheduled")
+	print("The outdoor event is still scheduled")
 ```
 
 #### conditional expressions 
@@ -547,7 +547,7 @@ dog.sleep()
 
 *Note*:
 `multiple inheritance` = inherit from more than one parent class. C(A,B)
-`multilvel inheritance` = inherit from a parent which inherits from another parent. 
+`multilevel inheritance` = inherit from a parent which inherits from another parent. 
 - C(B) <- B(A) <- A
 
 #### Super function
@@ -558,8 +558,8 @@ dog.sleep()
 ```python
 class Shape:
 	def __init__(self, color, is_filled):
-	self.color = color
-	self.is_filled = is_filled
+		self.color = color
+		self.is_filled = is_filled
 	
 	def describe(self):
 		print("Parent description")
@@ -833,7 +833,7 @@ try:
 	print(1/ number)
 
 except ZeroDivisionError:
-	print("You can't divide by zeor IDIOt!")
+	print("You can't divide by zero IDIOt!")
 except ValueError:
 	print("Enter only numbers please!")
 except Exception:
