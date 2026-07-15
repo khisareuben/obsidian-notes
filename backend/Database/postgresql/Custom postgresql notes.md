@@ -746,16 +746,45 @@ SELECT LEAST(100, 20, 50 90);
 ```
 
 #### case clause
-- Is used in printing out a string 
+- Is used in printing out a string
 - Not commonly used
 ```sql
-SELECT name, price
+SELECT name, price,
 CASE
 	WHEN price > 600 THEN 'high'
 	WHEN price > 300 THEN 'medium'
 	ELSE 'cheap'
 END
 FROM products;
+```
+
+```SQL
+SELECT id AS order_id,
+CASE status
+	WHEN 'shipped' THEN 'On the way'
+	WHEN 'delivered' THEN 'Complete'
+	WHEN 'cancelled' THEN 'Cancelled'
+	ELSE 'Processing'
+END AS status_label
+FROM orders
+ORDER BY id;
+```
+
+```sql
+SELECT 
+    first_name, 
+    last_name, 
+    date_of_birth,
+    CASE 
+        WHEN date_of_birth > '1990-01-01' THEN 'Born after 1990'
+        WHEN date_of_birth > '1960-01-01' THEN 'Born 1960–1990'
+        ELSE 'Born before 1960'
+    END AS age_group
+FROM 
+    patients
+ORDER BY 
+    date_of_birth DESC;
+
 ```
 
 #### CAST / Type Conversion

@@ -21,6 +21,9 @@ name.columns # to get the list of columns
 
 name.shape # to get the number of raws and columns
 
+name.dtypes # shows the data type of all columns
+
+
 ```
 
 #### How to retrieve data in a file
@@ -88,7 +91,8 @@ Data.dropna(subset=["ColumnName"], inplace=True) #drops NaN for a specific colum
 # isna() only recognizes these `None`, `NaN`, or `NaT`
 
 #reassigning the index values
-data.reset_index(inplace=True)
+data.reset_index(drop=True)
+# data.reset_index(inplace=True)
 
 #returning the number of unique elements exluding NaN values
 data["ColumnName"].nunique()
@@ -125,6 +129,9 @@ df['price'] = df['price'].astype(int)
 type(df['price'][2])
 
 # np.nan 
+
+"""this excludes(~) 'UNKNOWN' 'ERROR' from all the rows(axis=1) """
+data = data[~data.isin(["UNKNOWN", "ERROR"]).any(axis=1)]
 ```
 
 #### Working with dates
