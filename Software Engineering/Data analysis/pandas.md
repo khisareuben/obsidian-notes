@@ -194,3 +194,74 @@ name.column1.plot()
 name.column2.plot();
 
 ```
+
+
+### Core categories and representative functions
+
+#### General purpose functions
+
+- **clean_names** — _Normalize column names to snake_case, remove special characters._ **Example**
+    
+    
+    
+    ```python
+    df = df.clean_names()
+    ```
+    
+    Use when you want consistent column identifiers.
+    
+- **add_column** _(deprecated; prefer_ `DataFrame.assign`_)_ — _Add a column by name with scalar, list, or iterator._ **Example**
+    
+    
+    ```python
+    df = df.add_column(column_name="c", value=1)
+    ```
+    
+    Raises if lengths mismatch.
+    
+- **remove_columns / drop_constant_columns / drop_duplicate_columns** — _Remove unwanted or redundant columns quickly._ **Example**
+    
+    
+    ```python
+    df = df.remove_columns(["tmp"]).drop_constant_columns().drop_duplicate_columns()
+    ```
+    
+
+#### Missing data and imputation
+
+- **fill / impute / flag_nulls** — _Fill missing values, impute by strategy, or create boolean flags for nulls._ **Example**
+    
+    ```python
+    df = df.fillna(0)            # pandas native
+    df = df.impute("age", strategy="median")
+    df = df.flag_nulls("income")
+    ```
+    
+
+#### Reshaping and splitting
+
+- **deconcatenate_column / expand_column / explode_index / pivot / row_to_names** — _Split combined columns, expand nested structures, pivot tables, or promote a row to header._ **Example**
+        
+    ```python
+    df = df.deconcatenate_column("full_name", into=["first","last"], sep=" ")
+    ```
+    
+
+#### Column transforms and feature engineering
+
+- **mutate / transform_columns / min_max_scale / label_encode / encode_categorical** — _Create or transform features with chaining-friendly syntax._ **Example**
+    
+    
+    ```python
+    df = df.mutate(age_years = df.age / 365)
+    df = df.min_max_scale("score")
+    ```
+    
+
+#### Joins, grouping, and aggregation
+
+- **conditional_join / groupby_agg / groupby_topk / join_apply** — _Advanced joins and grouped summaries._ **Example**
+    
+    ```python
+    df_summary = df.groupby_agg(["id"], {"score":"mean"})
+    ```
