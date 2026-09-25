@@ -62,7 +62,7 @@ pyside6-rcc resources.qrc -o resources_rc.py
 Use:
 ```python
 import resources_rc
-pixmap = QPixmap(":/images/logo.png")
+pixmap = QPixmap(":/assets/images/logo.png")
 label.setPixmap(pixmap)
 ```
 
