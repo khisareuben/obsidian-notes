@@ -405,3 +405,97 @@ pip install PySide6
 python main.py
 ```
 Shortcuts: Alt+Left = Back, Alt+Right = Forward
+
+This is a perfect **MVC-like decoupled architecture**. Think of it as 3 layers. Here is how they connect:
+
+### The Big Picture
+
+```
+main.py → MainWindow → NavigationController → Pages
+[STARTS] [OWNS EVERYTHING] [THE BRAIN] [DUMB UI]
+```
+
+**1. `page_types.py` - The Contract (no dependencies)**
+This is at the bottom so EVERYONE can import it without circular imports. It's just an Enum: `HOME=0, PROFILE=1, SETTINGS=2`. It stops you from using magic numbers like `stack.setCurrentIndex(0)`.
+
+**2. `pages/base_page.py` - The Rule**
+Every page inherits from `BasePage`. It has one crucial line:
+
+```python
+request_navigate = Signal(Page)
+```
+
+This is the rule: **Pages are NOT allowed to touch `QStackedWidget`**. They can only say "I *request* to go to PROFILE" by emitting this signal. They are dumb.
+
+**3. `pages/` - The UI**
+`HomePage`, `ProfilePage`, etc. just emit:
+```python
+self.request_navigate.emit(Page.PROFILE)
+```
+They don't know who listens. They also have `on_enter()` / `on_leave()` - called when you arrive/leave, good for loading data.
+
+`pages/__init__.py` just makes imports clean so MainWindow can do `from pages import HomePage` instead of `from pages.home_page import HomePage`.
+
+**4. `navigation.py` - The Brain**
+It owns two lists: `_history` and `_future` - exactly like a browser.
+
+It does ZERO UI work. It just manages state:
+- `navigate_to(Page.PROFILE)` -> pushes current page to `_history`, clears `_future`, sets `_current = PROFILE`, then emits `page_changed` and `history_changed`
+- `go_back()` -> pops from `_history`, pushes current to `_future`
+- `go_forward()` -> pops from `_future`, pushes current to `_history`
+
+It talks to the outside world ONLY via signals: `page_changed` and `history_changed`.
+
+**5. `main_window.py` - The Boss Who Wires Everything**
+This is where everything connects. Look at `__init__`:
+
+```python
+# 1. Create brain
+self.nav_controller = NavigationController()
+
+# 2. Create the actual QStackedWidget
+self.stack = QStackedWidget()
+
+# 3. Create all pages ONCE - so state is preserved (your QLineEdit text stays)
+self.pages_map = {
+    Page.HOME: HomePage(),
+    Page.PROFILE: ProfilePage(),
+}
+
+# 4. WIRING A: Page -> Controller
+# When any page says "I want to navigate", tell the controller
+page_widget.request_navigate.connect(self.nav_controller.navigate_to)
+
+# 5. WIRING B: Controller -> MainWindow
+# When controller says "page changed", MainWindow actually changes the UI
+self.nav_controller.page_changed.connect(self.on_page_changed)
+self.nav_controller.history_changed.connect(self.update_nav_buttons)
+
+# 6. Start
+self.nav_controller.navigate_to(Page.HOME, add_to_history=False)
+```
+
+Then `on_page_changed` does the only place where `QStackedWidget` is touched:
+
+```python
+def on_page_changed(self, page: Page):
+    self.pages_map[self._last_page].on_leave() # old page cleanup
+    self.stack.setCurrentWidget(self.pages_map[page]) # THE ONLY setCurrentWidget in app
+    self.pages_map[page].on_enter() # new page init
+```
+
+**6. `main.py` - Entry only**
+Just creates `QApplication` and shows `MainWindow`. This is why you don't get segfaults anymore - `app` lives for the whole program, `window` is kept as a variable until `app.exec()` finishes.
+
+### Flow Example: Click "Go to Profile"
+
+1. You are on `HOME`. You click button in `HomePage`
+2. `HomePage` emits `request_navigate.emit(Page.PROFILE)`
+3. `MainWindow` is listening, it calls `nav_controller.navigate_to(PROFILE)`
+4. Controller: `_history = [HOME]`, `_current = PROFILE`, emits `page_changed(PROFILE)`
+5. `MainWindow.on_page_changed` hears it: calls `home.on_leave()`, does `stack.setCurrentWidget(profile)`, calls `profile.on_enter()`
+6. Controller also emits `history_changed(True, False)` -> MainWindow enables/disables Back/Forward buttons.
+
+If you now press Back: `nav_controller.go_back()` -> `_history=[]`, `_future=[PROFILE]`, `_current=HOME` -> `page_changed(HOME)` -> UI switches back. Your text in Profile's QLineEdit is still there because the `ProfilePage` object was never deleted.
+
+That's the industry rule: **Pages request, Controller decides, MainWindow executes.**
