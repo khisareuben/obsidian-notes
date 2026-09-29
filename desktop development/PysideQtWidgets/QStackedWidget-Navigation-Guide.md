@@ -180,31 +180,54 @@ class MainWindow(QMainWindow):
         super().__init__()
         self.setWindowTitle("QStackedWidget - Industry Standard")
         self.resize(800, 600)
+
+        # Central controller for navigation logic (history, back/forward, current page)
+        # Keeps UI decoupled from navigation rules
         self.nav_controller = NavigationController()
+
+        # QStackedWidget holds all pages in a stack, but only shows one at a time
+        # This is the industry standard for multi-page apps instead of creating/destroying pages
         self.stack = QStackedWidget()
+
+        # Pre-instantiate all pages and map them to their enum identifier
+        # This allows fast switching and state preservation
         self.pages_map = {
             Page.HOME: HomePage(),
             Page.PROFILE: ProfilePage(),
             Page.SETTINGS: SettingsPage(),
         }
+
+        # Add each page to the stack and connect its internal navigation requests
+        # to the central controller
         for page_widget in self.pages_map.values():
             self.stack.addWidget(page_widget)
+            # Each page can emit request_navigate(Page.X) to request a page change
             page_widget.request_navigate.connect(self.nav_controller.navigate_to)
+
+        # Controller -> UI: when the controller decides page has changed, update the UI
         self.nav_controller.page_changed.connect(self.on_page_changed)
+        # Controller -> UI: when back/forward availability changes, update button states
         self.nav_controller.history_changed.connect(self.update_nav_buttons)
+
         self.setup_toolbar()
         self.setup_central()
+
+        # Initial navigation - don't add to history since this is the first entry
         self.nav_controller.navigate_to(Page.HOME, add_to_history=False)
 
     def setup_toolbar(self):
         toolbar = QToolBar("Navigation")
         self.addToolBar(toolbar)
+
+        # Browser-style actions with shortcuts Alt+Left / Alt+Right
         self.action_back = QAction("← Back", self)
         self.action_back.setShortcut("Alt+Left")
         self.action_back.triggered.connect(self.nav_controller.go_back)
+
         self.action_forward = QAction("Forward →", self)
         self.action_forward.setShortcut("Alt+Right")
         self.action_forward.triggered.connect(self.nav_controller.go_forward)
+
         toolbar.addAction(self.action_back)
         toolbar.addAction(self.action_forward)
 
@@ -212,6 +235,8 @@ class MainWindow(QMainWindow):
         container = QWidget()
         layout = QVBoxLayout(container)
         layout.setContentsMargins(0,0,0,0)
+
+        # Custom in-content navigation bar (duplicate of toolbar for convenience)
         nav_bar = QHBoxLayout()
         self.btn_back = QPushButton("←")
         self.btn_forward = QPushButton("→")
@@ -221,21 +246,30 @@ class MainWindow(QMainWindow):
         self.btn_forward.clicked.connect(self.nav_controller.go_forward)
         nav_bar.addWidget(self.btn_back)
         nav_bar.addWidget(self.btn_forward)
-        nav_bar.addStretch()
+        nav_bar.addStretch() # Push buttons to the left
+
         layout.addLayout(nav_bar)
-        layout.addWidget(self.stack)
+        layout.addWidget(self.stack) # Stack takes remaining space
         self.setCentralWidget(container)
 
     def on_page_changed(self, page: Page):
+        # Call lifecycle hook on the page we're leaving (for cleanup / save state)
         if hasattr(self, '_last_page') and self._last_page in self.pages_map:
             self.pages_map[self._last_page].on_leave()
+
+        # Switch the visible widget in the stack
         widget = self.pages_map[page]
         self.stack.setCurrentWidget(widget)
+
+        # Call lifecycle hook on the page we're entering (for refresh / load data)
         widget.on_enter()
+
+        # Track last page for next transition
         self._last_page = page
         self.statusBar().showMessage(f"Current: {page.name}")
 
     def update_nav_buttons(self, can_back: bool, can_forward: bool):
+        # Enable/disable both toolbar and in-content buttons based on history state
         self.btn_back.setEnabled(can_back)
         self.btn_forward.setEnabled(can_forward)
         self.action_back.setEnabled(can_back)
