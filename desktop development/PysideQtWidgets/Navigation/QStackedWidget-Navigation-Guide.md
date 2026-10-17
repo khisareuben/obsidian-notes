@@ -6,6 +6,7 @@ Complete production-ready template for back/forth navigation with QStackedWidget
 ```
 qstacked_demo/
 ├── main.py                 # Entry only
+├── page_types.py
 ├── navigation.py           # Page enum + NavigationController (brain)
 ├── main_window.py          # Owns QStackedWidget, connects signals
 └── pages/

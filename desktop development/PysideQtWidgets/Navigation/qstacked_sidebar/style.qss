@@ -1,0 +1,70 @@
+#centralWidget {
+    background-color: #f5f5f7;
+}
+#sidebar {
+    background-color: #1e1e1e;
+    border-right: 1px solid #2a2a2a;
+}
+#toggleBtn {
+    background-color: #2d2d2d;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    text-align: left;
+    font-weight: bold;
+}
+#toggleBtn:hover {
+    background-color: #3a3a3a;
+}
+#navBtn {
+    background-color: transparent;
+    color: #a0a0a0;
+    padding: 12px 12px;
+    border: none;
+    border-radius: 8px;
+    text-align: left;
+    font-size: 14px;
+}
+#navBtn:hover {
+    background-color: #2d2d2d;
+    color: white;
+}
+#navBtn:checked {
+    background-color: #3a3a3a;
+    color: white;
+    border-left: 3px solid #0078d4;
+}
+#smallNavBtn {
+    background-color: #252525;
+    color: #a0a0a0;
+    padding: 8px;
+    border: none;
+    border-radius: 6px;
+    text-align: left;
+}
+#smallNavBtn:hover {
+    background-color: #2d2d2d;
+    color: white;
+}
+#smallNavBtn:disabled {
+    color: #555;
+    background-color: transparent;
+}
+#separator {
+    background-color: #333;
+    max-height: 1px;
+    margin: 6px 0px;
+}
+#stack {
+    background-color: white;
+}
+QLabel {
+    color: #1e1e1e;
+}
+QTextBrowser#markdownViewer {
+    background-color: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 8px;
+}
