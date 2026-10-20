@@ -1,3 +1,0 @@
-- Do you believe other writers
-- your own evidence
-- your limitations
